@@ -1,121 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import './App.css'
 
+const topicGroups = [
+  {
+    id: 'analysis',
+    title: 'Analysis and Recursion',
+    description:
+      'Trace iterative and recursive algorithms and understand Big-O time and space complexity.',
+  },
+  {
+    id: 'hashing',
+    title: 'Hashing and Collections',
+    description:
+      'Solve problems with Python sets, dictionaries, hashing, arrays, and lists.',
+  },
+  {
+    id: 'trees',
+    title: 'Heaps and Balanced Trees',
+    description:
+      'Learn how priority queues, heaps, and balanced search trees organize data efficiently.',
+  },
+  {
+    id: 'graphs',
+    title: 'Graph Algorithms',
+    description:
+      'Study BFS, DFS, topological sorting, Dijkstra, Prim, and Kruskal step by step.',
+  },
+  {
+    id: 'design',
+    title: 'Algorithm Design',
+    description:
+      'Compare greedy, divide-and-conquer, dynamic programming, backtracking, and randomized algorithms.',
+  },
+]
+
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+    <div className="app">
+      <header className="site-header">
+        <a className="site-name" href="#top">
+          CS3 Data Structures
+        </a>
+
+        <nav className="site-navigation" aria-label="Main navigation">
+          <a href="#topics">Topics</a>
+          <a href="#approach">Learning approach</a>
+        </nav>
+      </header>
+
+      <main id="top">
+        <section className="hero-section">
+          <p className="eyebrow">Python-focused study guide</p>
+
+          <h1>Learn data structures and algorithms step by step.</h1>
+
+          <p className="hero-description">
+            Build a strong CS3 foundation with visual explanations, Python
+            examples, algorithm traces, complexity analysis, and practice
+            questions.
           </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
 
-      <div className="ticks"></div>
+          <a className="primary-button" href="#topics">
+            Explore course topics
+          </a>
+        </section>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <section className="topics-section" id="topics">
+          <p className="section-label">Course roadmap</p>
+          <h2>Topics from your CS3 syllabus</h2>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
+          <div className="topic-grid">
+            {topicGroups.map((group) => (
+              <article className="topic-card" key={group.id}>
+                <h3>{group.title}</h3>
+                <p>{group.description}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+
+        <section className="approach-section" id="approach">
+          <p className="section-label">How you will learn</p>
+          <h2>Understand, trace, implement, and apply.</h2>
+          <p>
+            Every lesson will include a plain-language explanation, important
+            vocabulary, a visual demonstration, Python code, a line-by-line
+            breakdown, Big-O analysis, common mistakes, and practice problems.
+          </p>
+        </section>
+      </main>
+
+      <footer className="site-footer">
+        <p>Created as a Python-focused CS3 learning project.</p>
+      </footer>
+    </div>
   )
 }
 
