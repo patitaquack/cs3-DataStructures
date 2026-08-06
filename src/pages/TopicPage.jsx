@@ -85,8 +85,90 @@ function TopicPage() {
             ))}
           </div>
         </section>
-      </div>
-    </main>
+        <section className="lesson-section">
+          <p className="section-label">Algorithm Analysis</p>
+          <h2>{lesson.bigO.title}</h2>
+
+          <p className="lesson-body">{lesson.bigO.introduction}</p>
+
+          <div className="key-idea">
+            <strong>Key idea:</strong>
+            <p>{lesson.bigO.keyIdea}</p>
+          </div>
+
+          <div className="complexity-examples">
+            {lesson.bigO.examples.map((example) => (
+              <article className="complexity-card" key={example.notation}>
+                <div className="complexity-heading">
+                  <span className="complexity-badge">{example.notation}</span>
+                  <h3>{example.name}</h3>
+                </div>
+
+                <p>{example.explanation}</p>
+
+                <h4>Python example</h4>
+
+                <pre className="python-code">
+                  <code>{example.code}</code>
+                </pre>
+
+                <h4>Line-by-line explanation</h4>
+
+                <div className="code-explanations">
+                  {example.lineByLine.map((item) => (
+                    <div className="code-explanation" key={item.line}>
+                      <code>{item.line}</code>
+                      <p>{item.explanation}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="why-box">
+                  <strong>Why is this {example.notation}?</strong>
+                  <p>{example.why}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+          <div className="growth-comparison">
+            <h3>Big-O Growth Comparison</h3>
+
+            <p>
+              Compare how the approximate amount of work changes as the input
+              size n becomes larger.
+            </p>
+
+            <div className="growth-table-wrapper">
+              <table className="growth-table">
+                <thead>
+                  <tr>
+                  <th>Input size (n)</th>
+                  <th>O(1)</th>
+                  <th>O(log n)</th>
+                  <th>O(n)</th>
+                  <th>O(n log n)</th>
+                  <th>O(n²)</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  {lesson.bigO.growthComparison.map((row) => (
+                    <tr key={row.inputSize}>
+                      <td>{row.inputSize.toLocaleString()}</td>
+                      <td>{row.constant.toLocaleString()}</td>
+                      <td>{row.logarithmic.toLocaleString()}</td>
+                      <td>{row.linear.toLocaleString()}</td>
+                      <td>{row.linearithmic.toLocaleString()}</td>
+                      <td>{row.quadratic.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+               </div>
+            </div>
+          </section>
+          </div>
+          </main>
   )
 }
 
