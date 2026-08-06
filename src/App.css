@@ -375,6 +375,24 @@
   font-size: 1rem;
 }
 
+.algorithm-steps {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.algorithm-steps li {
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.65);
+  color: #c8d2e3;
+  line-height: 1.6;
+}
+
 .python-code {
   margin: 0;
   padding: 24px;
@@ -555,6 +573,47 @@
   margin: 0;
 }
 
+.logarithmic-section {
+  margin-top: 50px;
+  padding: 32px;
+  border-radius: 16px;
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.logarithmic-section h3 {
+  color: #ffffff;
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+}
+
+.logarithmic-section p {
+  color: #aebbd0;
+  line-height: 1.8;
+}
+
+.log-steps {
+  margin-top: 32px;
+  display: grid;
+  gap: 16px;
+}
+
+.log-step {
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.45);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.log-step h4 {
+  color: #67e8f9;
+  margin: 0 0 10px;
+}
+
+.log-step strong {
+  color: #ffffff;
+}
+
 @media (max-width: 700px) {
   .lesson-page {
     padding: 28px 16px 72px;
@@ -614,4 +673,5 @@
     width: min(100% - 32px, 900px);
     padding: 80px 0;
   }
+
 }

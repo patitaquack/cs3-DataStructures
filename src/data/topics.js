@@ -5,6 +5,14 @@ export const topicGroups = [
       description:
         'Trace iterative and recursive algorithms and understand Big-O time and space complexity.',
     },
+
+    {
+        id: 'sorting',
+        title: 'Sorting Algorithms',
+        description:
+          'Learn how algorithms organize data using different sorting strategies.',
+      },
+      
     {
       id: 'hashing',
       title: 'Hashing and Collections',
