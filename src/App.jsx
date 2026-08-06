@@ -1,8 +1,10 @@
+import { Link, Route, Routes } from 'react-router'
 import { topicGroups } from './data/topics.js'
+import TopicPage from './pages/TopicPage.jsx'
 import './App.css'
 
 
-function App() {
+function HomePage() {
   return (
     <div className="app">
       <header className="site-header">
@@ -39,12 +41,19 @@ function App() {
 
           <div className="topic-grid">
             {topicGroups.map((group) => (
-              <article className="topic-card" key={group.id}>
-                <h3>{group.title}</h3>
-                <p>{group.description}</p>
-              </article>
-            ))}
-          </div>
+             <Link
+              className="topic-card"
+              key={group.id}
+              to={`/topics/${group.id}`}
+          >
+            <h3>{group.title}</h3>
+            <p>{group.description}</p>
+            <span className="topic-card-action">Open lesson →</span>
+            </Link>
+        ))}
+        
+        </div>
+        
         </section>
 
         <section className="approach-section" id="approach">
@@ -62,6 +71,15 @@ function App() {
         <p>Created as a Python-focused CS3 learning project.</p>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/topics/:topicId" element={<TopicPage />} />
+    </Routes>
   )
 }
 
