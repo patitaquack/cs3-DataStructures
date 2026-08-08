@@ -552,6 +552,103 @@ function TopicPage() {
   </section>
 )}
 
+{lesson.hashComplexity && (
+  <section className="lesson-section">
+    <p className="section-label">Algorithm Analysis</p>
+
+    <h2>{lesson.hashComplexity.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.hashComplexity.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.hashComplexity.keyIdea}</p>
+    </div>
+
+    <div className="case-comparison">
+      <article className="case-card average-case">
+        <span>Typical Performance</span>
+
+        <h3>
+          {lesson.hashComplexity.averageVsWorst.average.title}
+        </h3>
+
+        <strong className="case-complexity">
+          {lesson.hashComplexity.averageVsWorst.average.complexity}
+        </strong>
+
+        <p>
+          {lesson.hashComplexity.averageVsWorst.average.explanation}
+        </p>
+      </article>
+
+      <article className="case-card worst-case">
+        <span>Unfavorable Performance</span>
+
+        <h3>
+          {lesson.hashComplexity.averageVsWorst.worst.title}
+        </h3>
+
+        <strong className="case-complexity">
+          {lesson.hashComplexity.averageVsWorst.worst.complexity}
+        </strong>
+
+        <p>
+          {lesson.hashComplexity.averageVsWorst.worst.explanation}
+        </p>
+      </article>
+    </div>
+
+    <div className="hash-complexity-table-wrapper">
+      <table className="collection-table hash-complexity-table">
+        <thead>
+          <tr>
+            <th>Operation</th>
+            <th>Python Example</th>
+            <th>Average</th>
+            <th>Worst Case</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {lesson.hashComplexity.operations.map((operation) => (
+            <tr key={operation.operation}>
+              <th scope="row">{operation.operation}</th>
+              <td>
+                <code>{operation.example}</code>
+              </td>
+              <td>{operation.average}</td>
+              <td>{operation.worst}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="space-complexity-card">
+      <div>
+        <span>Memory Analysis</span>
+        <h3>{lesson.hashComplexity.spaceComplexity.title}</h3>
+      </div>
+
+      <strong>
+        {lesson.hashComplexity.spaceComplexity.complexity}
+      </strong>
+
+      <p>
+        {lesson.hashComplexity.spaceComplexity.explanation}
+      </p>
+    </div>
+
+    <div className="hash-takeaway">
+      <strong>Remember for CS3:</strong>
+      <p>{lesson.hashComplexity.takeaway}</p>
+    </div>
+  </section>
+)}
+
 
         {lesson.comparison && (
 

@@ -502,7 +502,7 @@ export const hashingLesson = {
         warning:
           'The key % 5 calculation above is only a simplified teaching model. It is not a description of the full algorithm Python uses internally for dictionaries.'
       },
-      
+
       hashComplexity: {
         title: 'Hash Table Time and Space Complexity',
       
@@ -578,6 +578,272 @@ export const hashingLesson = {
       
         takeaway:
           'For CS3 problems, remember the phrase average O(1) for dictionary key lookup and set membership. Also remember that storing n items requires O(n) space.'
+      },
+      commonMistakes: {
+        title: 'Common Hashing and Collection Mistakes',
+      
+        introduction:
+          'Python dictionaries and sets are powerful, but several common mistakes can cause errors or unexpected results. Understanding these mistakes will also help you choose the correct data structure.',
+      
+        mistakes: [
+          {
+            title: 'Using an Unhashable Dictionary Key',
+      
+            problem:
+              'Lists are mutable, so they cannot be used directly as dictionary keys.',
+      
+            badCode: [
+              'locations = {}',
+              'locations[[1, 2]] = "Room 101"'
+            ].join('\n'),
+      
+            goodCode: [
+              'locations = {}',
+              'locations[(1, 2)] = "Room 101"'
+            ].join('\n'),
+      
+            lesson:
+              'Dictionary keys must be hashable. A list is mutable and unhashable. A tuple can be used as a key when all of the values inside it are also hashable.'
+          },
+      
+          {
+            title: 'Forgetting That Dictionary Membership Checks Keys',
+      
+            problem:
+              'Using in with a dictionary checks its keys, not its values.',
+      
+            badCode: [
+              'student = {"name": "Damaris"}',
+              '',
+              'print("Damaris" in student)'
+            ].join('\n'),
+      
+            goodCode: [
+              'student = {"name": "Damaris"}',
+              '',
+              'print("Damaris" in student.values())'
+            ].join('\n'),
+      
+            lesson:
+              '"name" in student checks for a key and is average O(1). Searching student.values() checks values instead and may require O(n) time.'
+          },
+      
+          {
+            title: 'Trying to Index a Set',
+      
+            problem:
+              'Sets do not provide positional indexing like lists do.',
+      
+            badCode: [
+              'values = {10, 20, 30}',
+              '',
+              'print(values[0])'
+            ].join('\n'),
+      
+            goodCode: [
+              'values = {10, 20, 30}',
+              '',
+              'for value in values:',
+              '    print(value)'
+            ].join('\n'),
+      
+            lesson:
+              'Use a set when uniqueness and membership testing matter. If your program needs index-based access such as items[0], a list is usually more appropriate.'
+          },
+      
+          {
+            title: 'Using remove() When a Set Value Might Be Missing',
+      
+            problem:
+              'The remove() method raises a KeyError when the requested value is not present.',
+      
+            badCode: [
+              'values = {1, 2, 3}',
+              '',
+              'values.remove(99)'
+            ].join('\n'),
+      
+            goodCode: [
+              'values = {1, 2, 3}',
+              '',
+              'values.discard(99)'
+            ].join('\n'),
+      
+            lesson:
+              'Use remove() when a missing value should be treated as an error. Use discard() when it is acceptable for the value to already be absent.'
+          },
+      
+          {
+            title: 'Assuming O(1) Means Guaranteed O(1)',
+      
+            problem:
+              'Dictionary and set operations are often described as O(1), but that describes their expected average behavior.',
+      
+            badCode: [
+              '# Incorrect assumption:',
+              '# Dictionary lookup is always O(1)'
+            ].join('\n'),
+      
+            goodCode: [
+              '# Better description:',
+              '# Dictionary key lookup is O(1) on average'
+            ].join('\n'),
+      
+            lesson:
+              'For CS3, remember the distinction between average-case and worst-case performance. Hash-table lookup is generally O(1) on average but can degrade in unfavorable cases.'
+          }
+        ]
+      },
+      practice: {
+        title: 'Check Your Hashing Knowledge',
+      
+        introduction:
+          'Use these questions to practice Python dictionaries, sets, hashing, data-structure selection, and Big-O analysis.',
+      
+        questions: [
+          {
+            category: 'Tracing',
+      
+            question:
+              'What does this code print?',
+      
+            code: [
+              'student = {"name": "Damaris", "year": 3}',
+              'student["year"] = 4',
+              '',
+              'print(student["year"])'
+            ].join('\n'),
+      
+            answer: '4',
+      
+            explanation:
+              'The dictionary initially stores 3 for the key "year". The assignment student["year"] = 4 updates the existing value, so the lookup returns 4.'
+          },
+      
+          {
+            category: 'Sets',
+      
+            question:
+              'How many values are stored in numbers?',
+      
+            code: [
+              'numbers = {1, 2, 2, 3, 3, 4}',
+              '',
+              'print(len(numbers))'
+            ].join('\n'),
+      
+            answer: '4',
+      
+            explanation:
+              'Sets keep unique values. The duplicate 2 and 3 values are not stored twice, leaving 1, 2, 3, and 4.'
+          },
+      
+          {
+            category: 'Dictionaries',
+      
+            question:
+              'What does this membership test print?',
+      
+            code: [
+              'student = {',
+              '    "name": "Damaris",',
+              '    "major": "Computer Science"',
+              '}',
+              '',
+              'print("Damaris" in student)'
+            ].join('\n'),
+      
+            answer: 'False',
+      
+            explanation:
+              'The in operator checks dictionary keys. The keys are "name" and "major". "Damaris" is a value, so the expression is False.'
+          },
+      
+          {
+            category: 'Data Structure Selection',
+      
+            question:
+              'Which Python collection is best for storing each student ID together with that student’s grade?',
+      
+            answer: 'Dictionary',
+      
+            explanation:
+              'A dictionary is appropriate because each student ID can be used as a key and associated with a grade value.'
+          },
+      
+          {
+            category: 'Big-O',
+      
+            question:
+              'What is the average-case time complexity of membership testing in a Python set?',
+      
+            code: 'target in values_set',
+      
+            answer: 'O(1) on average',
+      
+            explanation:
+              'Sets use hashing, which allows Python to locate values directly on average instead of scanning every element.'
+          },
+      
+          {
+            category: 'Space Complexity',
+      
+            question:
+              'If a dictionary stores n entries, what is its overall space complexity?',
+      
+            answer: 'O(n)',
+      
+            explanation:
+              'As the number of stored entries grows, the amount of memory needed for the dictionary also grows with n.'
+          },
+      
+          {
+            category: 'Collisions',
+      
+            question:
+              'In our simplified bucket = key % 5 model, what happens with keys 12 and 17?',
+      
+            code: [
+              '12 % 5 = 2',
+              '17 % 5 = 2'
+            ].join('\n'),
+      
+            answer: 'They collide at bucket 2',
+      
+            explanation:
+              'Both different keys produce the same table location in our simplified model. That is a hash collision.'
+          },
+      
+          {
+            category: 'Hashability',
+      
+            question:
+              'Which can be used as a dictionary key: [1, 2] or (1, 2)?',
+      
+            answer: '(1, 2)',
+      
+            explanation:
+              'A list is mutable and therefore unhashable. A tuple can be hashable when all of its contents are hashable, so the tuple (1, 2) can be used as a dictionary key.'
+          },
+      
+          {
+            category: 'Safe Lookup',
+      
+            question:
+              'What does this code print?',
+      
+            code: [
+              'student = {"name": "Damaris"}',
+              '',
+              'print(student.get("gpa", "Not recorded"))'
+            ].join('\n'),
+      
+            answer: 'Not recorded',
+      
+            explanation:
+              'The key "gpa" does not exist. get() returns the provided default value instead of raising a KeyError.'
+          }
+        ]
       }
   }
   

@@ -1573,6 +1573,154 @@
   color: #aebbd0;
   line-height: 1.7;
 }
+/* Hash Table Complexity */
+
+.case-comparison {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.case-card {
+  padding: 28px;
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.case-card > span {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.case-card h3 {
+  margin: 14px 0 18px;
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.case-complexity {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 900;
+}
+
+.case-card p {
+  margin: 18px 0 0;
+  color: #aebbd0;
+  line-height: 1.7;
+}
+
+.average-case {
+  border: 1px solid rgba(52, 211, 153, 0.35);
+}
+
+.average-case > span,
+.average-case .case-complexity {
+  color: #6ee7b7;
+}
+
+.worst-case {
+  border: 1px solid rgba(251, 113, 133, 0.35);
+}
+
+.worst-case > span,
+.worst-case .case-complexity {
+  color: #fda4af;
+}
+
+
+/* Complexity Table */
+
+.hash-complexity-table-wrapper {
+  margin-top: 36px;
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+}
+
+.hash-complexity-table td code {
+  padding: 6px 9px;
+  border-radius: 6px;
+  color: #67e8f9;
+  background: rgba(2, 6, 23, 0.5);
+  white-space: nowrap;
+}
+
+.hash-complexity-table thead th:nth-child(2) {
+  color: #67e8f9;
+}
+
+.hash-complexity-table thead th:nth-child(3) {
+  color: #6ee7b7;
+}
+
+.hash-complexity-table thead th:nth-child(4) {
+  color: #fda4af;
+}
+
+
+/* Space Complexity */
+
+.space-complexity-card {
+  margin-top: 36px;
+  padding: 26px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 18px;
+  border: 1px solid rgba(129, 140, 248, 0.3);
+  border-radius: 14px;
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.space-complexity-card span {
+  color: #a5b4fc;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.space-complexity-card h3 {
+  margin: 8px 0 0;
+  color: #ffffff;
+}
+
+.space-complexity-card > strong {
+  color: #a5b4fc;
+  font-size: 2.2rem;
+}
+
+.space-complexity-card > p {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: #aebbd0;
+  line-height: 1.7;
+}
+
+
+/* CS3 Takeaway */
+
+.hash-takeaway {
+  margin-top: 24px;
+  padding: 22px 24px;
+  border-left: 4px solid #67e8f9;
+  border-radius: 0 12px 12px 0;
+  background: rgba(103, 232, 249, 0.08);
+}
+
+.hash-takeaway strong {
+  color: #67e8f9;
+}
+
+.hash-takeaway p {
+  margin: 8px 0 0;
+  color: #c8d2e3;
+  line-height: 1.7;
+}
 
 @media (max-width: 700px) {
   .lesson-page {
@@ -1719,6 +1867,22 @@
 .collision-target {
   flex-direction: column;
   align-items: flex-start;
+}
+.case-comparison {
+  grid-template-columns: 1fr;
+}
+
+.case-card {
+  padding: 20px;
+}
+
+.space-complexity-card {
+  grid-template-columns: 1fr;
+  padding: 20px;
+}
+
+.space-complexity-card > p {
+  grid-column: auto;
 }
 
 }
