@@ -118,6 +118,440 @@ function TopicPage() {
             ))}
           </div>
         </section>
+        {lesson.hashingProcess && (
+  <section className="lesson-section">
+    <p className="section-label">
+      Hashing Concept
+    </p>
+
+    <h2>{lesson.hashingProcess.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.hashingProcess.introduction}
+    </p>
+
+    <div className="hash-process">
+      {lesson.hashingProcess.steps.map((step, index) => (
+        <div
+          className="hash-process-item"
+          key={step.label}
+        >
+          <article className="hash-step">
+            <span className="hash-step-number">
+              Step {index + 1}
+            </span>
+
+            <h3>{step.label}</h3>
+
+            <code className="hash-value">
+              {step.value}
+            </code>
+
+            <p>{step.explanation}</p>
+          </article>
+
+          {index !== lesson.hashingProcess.steps.length - 1 && (
+            <span className="hash-arrow">
+              →
+            </span>
+          )}
+        </div>
+      ))}
+    </div>
+
+    <h3>Python Example</h3>
+
+    <pre className="python-code">
+      <code>{lesson.hashingProcess.example}</code>
+    </pre>
+
+    <div className="hash-result">
+      <span>Output</span>
+      <code>{lesson.hashingProcess.result}</code>
+    </div>
+
+    <div className="key-idea">
+      <strong>Important:</strong>
+      <p>{lesson.hashingProcess.note}</p>
+    </div>
+  </section>
+)}
+
+{lesson.dictionary && (
+  <section className="lesson-section">
+    <p className="section-label">
+      Python Collections
+    </p>
+
+    <h2>{lesson.dictionary.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.dictionary.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.dictionary.keyIdea}</p>
+    </div>
+
+    <h3>Python Dictionary Example</h3>
+
+    <pre className="python-code">
+      <code>{lesson.dictionary.example}</code>
+    </pre>
+
+    <div className="hash-result">
+      <span>Output</span>
+
+      <code>
+        {lesson.dictionary.output}
+      </code>
+    </div>
+
+    <h3>Line-by-Line Explanation</h3>
+
+    <div className="code-explanations">
+      {lesson.dictionary.lineByLine.map((item) => (
+        <div
+          className="code-explanation"
+          key={item.line}
+        >
+          <code>{item.line}</code>
+
+          <p>{item.explanation}</p>
+        </div>
+      ))}
+
+    </div>
+
+    <h3>Common Dictionary Operations</h3>
+
+    <div className="dictionary-operations">
+      {lesson.dictionary.operations.map((operation) => (
+        <article
+          className="dictionary-operation"
+          key={operation.name}
+        >
+          <div className="dictionary-operation-header">
+            <h4>{operation.name}</h4>
+
+            <span>
+              {operation.complexity}
+            </span>
+          </div>
+
+          <code className="dictionary-syntax">
+            {operation.code}
+          </code>
+
+          <p>{operation.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="safe-lookup-card">
+      <h3>{lesson.dictionary.safeLookup.title}</h3>
+
+      <p>
+        {lesson.dictionary.safeLookup.explanation}
+      </p>
+
+      <div className="lookup-comparison">
+        <div className="lookup-example lookup-risky">
+          <span>⚠ Can raise KeyError</span>
+
+          <pre className="python-code">
+            <code>
+              {lesson.dictionary.safeLookup.riskyCode}
+            </code>
+          </pre>
+        </div>
+
+        <div className="lookup-example lookup-safe">
+          <span>✓ Safer lookup</span>
+
+          <pre className="python-code">
+            <code>
+              {lesson.dictionary.safeLookup.safeCode}
+            </code>
+          </pre>
+        </div>
+      </div>
+
+      <div className="hash-result">
+        <span>Result</span>
+
+        <code>
+          {lesson.dictionary.safeLookup.result}
+        </code>
+      </div>
+    </div>
+  </section>
+)}
+{lesson.sets && (
+  <section className="lesson-section">
+    <p className="section-label">
+      Python Collections
+    </p>
+
+    <h2>{lesson.sets.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.sets.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.sets.keyIdea}</p>
+    </div>
+
+    <h3>Removing Duplicates with a Set</h3>
+
+    <pre className="python-code">
+      <code>{lesson.sets.example}</code>
+    </pre>
+
+    <div className="hash-result">
+      <span>Output</span>
+      <code>{lesson.sets.output}</code>
+    </div>
+
+    <h3>Line-by-Line Explanation</h3>
+
+    <div className="code-explanations">
+      {lesson.sets.lineByLine.map((item) => (
+        <div
+          className="code-explanation"
+          key={item.line}
+        >
+          <code>{item.line}</code>
+          <p>{item.explanation}</p>
+        </div>
+      ))}
+    </div>
+
+    <h3>Common Set Operations</h3>
+
+    <div className="set-operations">
+      {lesson.sets.operations.map((operation) => (
+        <article
+          className="set-operation"
+          key={operation.name}
+        >
+          <div className="set-operation-header">
+            <h4>{operation.name}</h4>
+
+            <span>{operation.complexity}</span>
+          </div>
+
+          <code className="dictionary-syntax">
+            {operation.code}
+          </code>
+
+          <p>{operation.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="membership-comparison">
+      <h3>
+        {lesson.sets.membershipComparison.title}
+      </h3>
+
+      <p>
+        {lesson.sets.membershipComparison.explanation}
+      </p>
+
+      <div className="membership-options">
+        <article className="membership-option list-membership">
+          <span className="membership-label">
+            Python List
+          </span>
+
+          <code>
+            {lesson.sets.membershipComparison.list.code}
+          </code>
+
+          <strong>
+            {lesson.sets.membershipComparison.list.complexity}
+          </strong>
+
+          <p>
+            {lesson.sets.membershipComparison.list.reason}
+          </p>
+        </article>
+
+        <article className="membership-option set-membership">
+          <span className="membership-label">
+            Python Set
+          </span>
+
+          <code>
+            {lesson.sets.membershipComparison.set.code}
+          </code>
+
+          <strong>
+            {lesson.sets.membershipComparison.set.complexity}
+          </strong>
+
+          <p>
+            {lesson.sets.membershipComparison.set.reason}
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+)}
+{lesson.collectionComparison && (
+  <section className="lesson-section">
+    <p className="section-label">Data Structure Selection</p>
+
+    <h2>{lesson.collectionComparison.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.collectionComparison.introduction}
+    </p>
+
+    <div className="collection-table-wrapper">
+      <table className="collection-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>List</th>
+            <th>Set</th>
+            <th>Dictionary</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {lesson.collectionComparison.rows.map((row) => (
+            <tr key={row.feature}>
+              <th scope="row">{row.feature}</th>
+              <td>{row.list}</td>
+              <td>{row.set}</td>
+              <td>{row.dictionary}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="collection-scenarios">
+      <h3>Which Collection Should I Choose?</h3>
+
+      <p>
+        Read each problem and decide which Python collection fits the
+        situation best.
+      </p>
+
+      <div className="scenario-grid">
+        {lesson.collectionComparison.scenarios.map((scenario) => (
+          <article className="scenario-card" key={scenario.problem}>
+            <p className="scenario-problem">{scenario.problem}</p>
+
+            <div className="scenario-answer">
+              <span>Best choice</span>
+              <strong>{scenario.choice}</strong>
+            </div>
+
+            <p>{scenario.reason}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+)}
+
+{lesson.collisions && (
+  <section className="lesson-section">
+    <p className="section-label">Hash Tables</p>
+    <h2>{lesson.collisions.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.collisions.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.collisions.keyIdea}</p>
+    </div>
+
+    <div className="collision-model">
+      <h3>{lesson.collisions.teachingModel.title}</h3>
+
+      <p>{lesson.collisions.teachingModel.explanation}</p>
+
+      <code className="collision-formula">
+        {lesson.collisions.teachingModel.formula}
+      </code>
+
+      <div className="collision-entries">
+        {lesson.collisions.teachingModel.entries.map((entry) => (
+          <article className="collision-entry" key={entry.key}>
+            <span>Key</span>
+
+            <strong>{entry.key}</strong>
+
+            <code>{entry.calculation}</code>
+
+            <p>{entry.value}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="collision-target">
+        <span>Both keys map to</span>
+
+        <strong>
+          Bucket {lesson.collisions.teachingModel.entries[0].bucket}
+        </strong>
+
+        <span className="collision-alert">Collision!</span>
+      </div>
+    </div>
+
+    <div className="collision-process">
+      <h3>What Happens?</h3>
+
+      <div className="collision-steps">
+        {lesson.collisions.whatHappens.map((item) => (
+          <article className="collision-step" key={item.step}>
+            <span className="collision-step-number">
+              {item.step}
+            </span>
+
+            <div>
+              <h4>{item.title}</h4>
+              <p>{item.explanation}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <h3>Python Example</h3>
+
+    <pre className="python-code">
+      <code>{lesson.collisions.pythonExample}</code>
+    </pre>
+
+    <div className="hash-result">
+      <span>Output</span>
+      <pre>{lesson.collisions.output}</pre>
+    </div>
+
+    <div className="key-idea">
+      <strong>Python note:</strong>
+      <p>{lesson.collisions.pythonNote}</p>
+    </div>
+
+    <div className="collision-warning">
+      <strong>Learning note:</strong>
+      <p>{lesson.collisions.warning}</p>
+    </div>
+  </section>
+)}
+
 
         {lesson.comparison && (
 
