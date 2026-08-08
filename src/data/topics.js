@@ -12,7 +12,15 @@ export const topicGroups = [
         description:
           'Learn how algorithms organize data using different sorting strategies.',
       },
+      {
+        id: "linkedLists",
       
+        title: "Linked Lists",
+      
+        description:
+          "Learn nodes, pointers, insertion, deletion, and linked list complexity."
+      },
+
     {
       id: 'hashing',
       title: 'Hashing and Collections',

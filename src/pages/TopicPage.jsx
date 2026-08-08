@@ -8,6 +8,7 @@ function TopicPage() {
   const topic = topicGroups.find((group) => group.id === topicId)
   const lesson = lessonsById[topicId]
 
+
   if (!topic) {
     return (
       <main className="lesson-page">
@@ -117,6 +118,75 @@ function TopicPage() {
             ))}
           </div>
         </section>
+
+        {lesson.comparison && (
+
+<section className="lesson-section">
+
+  <p className="section-label">
+    Data Structure Comparison
+  </p>
+
+
+  <h2>
+    {lesson.comparison.title}
+  </h2>
+
+
+  <div className="growth-table-wrapper">
+
+    <table className="growth-table">
+
+      <thead>
+        <tr>
+          <th>
+            Feature
+          </th>
+
+          <th>
+            Array
+          </th>
+
+          <th>
+            Linked List
+          </th>
+        </tr>
+      </thead>
+
+
+      <tbody>
+
+        {lesson.comparison.rows.map((row) => (
+
+          <tr key={row.feature}>
+
+            <td>
+              {row.feature}
+            </td>
+
+            <td>
+              {row.array}
+            </td>
+
+            <td>
+              {row.linkedList}
+            </td>
+
+          </tr>
+
+        ))}
+
+      </tbody>
+
+
+    </table>
+
+  </div>
+
+
+</section>
+
+)}
 
 
         {lesson.bigO && (
@@ -316,10 +386,9 @@ function TopicPage() {
 
           )}
 
-
-
-
-
+          
+          
+          {lesson.bigO.growthComparison && (
           <div className="growth-comparison">
 
             <h3>
@@ -431,9 +500,721 @@ function TopicPage() {
             </div>
 
             </div>
+            )}
             
             </section>
         )}
+
+{lesson.nodeExample && (
+
+<section className="lesson-section">
+
+<p className="section-label">
+Node Structure
+</p>
+
+
+<h2>
+{lesson.nodeExample.title}
+</h2>
+
+
+<p className="lesson-body">
+{lesson.nodeExample.explanation}
+</p>
+
+
+<pre className="python-code">
+<code>
+{lesson.nodeExample.code}
+</code>
+</pre>
+
+
+<ul className="algorithm-steps">
+
+{lesson.nodeExample.steps.map((step)=>(
+<li key={step}>
+{step}
+</li>
+))}
+
+</ul>
+
+
+</section>
+
+)}
+
+
+{lesson.visualization && (
+
+<section className="lesson-section">
+
+<p className="section-label">
+Visual Representation
+</p>
+
+
+<h2>
+{lesson.visualization.title}
+</h2>
+
+
+<p className="lesson-body">
+{lesson.visualization.explanation}
+</p>
+
+
+<div className="linked-list-display">
+
+{lesson.visualization.nodes.map((node, index)=>(
+
+<div 
+className="linked-node"
+key={node.value}
+>
+
+<div className="node-box">
+
+  <div className="node-data">
+    {node.value}
+  </div>
+
+  <div className="node-next">
+    next
+  </div>
+
+</div>
+
+
+{index !== lesson.visualization.nodes.length - 1 && (
+
+<div className="node-pointer">
+→
+</div>
+
+)}
+
+
+
+
+</div>
+
+))}
+
+
+<div className="null-node">
+None
+</div>
+
+
+</div>
+
+
+
+
+</section>
+
+)}
+{lesson.traversal && (
+
+<section className="lesson-section">
+
+  <p className="section-label">
+    Linked List Traversal
+  </p>
+
+  <h2>
+    {lesson.traversal.title}
+  </h2>
+
+  <p className="lesson-body">
+    {lesson.traversal.explanation}
+  </p>
+
+  <h3>
+    Python Example
+  </h3>
+
+  <pre className="python-code">
+    <code>
+      {lesson.traversal.code}
+    </code>
+  </pre>
+
+  <h3>
+    Step-by-Step
+  </h3>
+
+  <ul className="algorithm-steps">
+
+    {lesson.traversal.steps.map((step) => (
+
+      <li key={step}>
+        {step}
+      </li>
+
+    ))}
+
+  </ul>
+
+  <div className="why-box">
+
+    <strong>
+      Why is traversal O(n)?
+    </strong>
+
+    <p>
+      To traverse a linked list, we begin at the head and follow each
+      next reference until we reach None. If the list contains n nodes,
+      we may need to visit all n nodes, so traversal takes O(n) time.
+    </p>
+
+  </div>
+
+</section>
+
+)}
+{lesson.insertion && (
+
+<section className="lesson-section">
+
+  <p className="section-label">
+    Linked List Insertion
+  </p>
+
+  <h2>
+    {lesson.insertion.title}
+  </h2>
+
+  <p className="lesson-body">
+    {lesson.insertion.explanation}
+  </p>
+
+  <h3>
+    Python Example
+  </h3>
+
+  <pre className="python-code">
+    <code>
+      {lesson.insertion.code}
+    </code>
+  </pre>
+
+  <h3>
+    Step-by-Step
+  </h3>
+
+  <ul className="algorithm-steps">
+
+    {lesson.insertion.steps.map((step) => (
+
+      <li key={step}>
+        {step}
+      </li>
+
+    ))}
+
+  </ul>
+
+  {lesson.insertion.visualization && (
+
+<div className="insertion-visualization">
+
+  <h3>Before Insertion</h3>
+
+  <div className="linked-list-display">
+
+    {lesson.insertion.visualization.before.map((value) => (
+
+      <div
+        className="linked-node"
+        key={`before-${value}`}
+      >
+
+        <div className="node-box">
+
+          <div className="node-data">
+            {value}
+          </div>
+
+          <div className="node-next">
+            next
+          </div>
+
+        </div>
+
+        <div className="node-pointer">
+          →
+        </div>
+
+      </div>
+
+    ))}
+
+    <div className="null-node">
+      None
+    </div>
+
+  </div>
+
+
+  <div className="insertion-action">
+    Insert {lesson.insertion.visualization.newValue} at the head
+  </div>
+
+
+  <h3>After Insertion</h3>
+
+  <div className="linked-list-display">
+
+    {lesson.insertion.visualization.after.map((value) => (
+        
+        <div
+        className={`linked-node ${
+
+            value === lesson.insertion.visualization.newValue
+            ? 'new-linked-node'
+            : ''
+        }`}
+        key={`after-${value}`}
+        >
+
+        <div className="node-box">
+
+          <div className="node-data">
+            {value}
+          </div>
+
+          <div className="node-next">
+            next
+          </div>
+
+        </div>
+
+        <div className="node-pointer">
+          →
+        </div>
+
+      </div>
+
+    ))}
+
+    <div className="null-node">
+      None
+    </div>
+
+  </div>
+
+</div>
+
+)}
+
+  <div className="why-box">
+
+    <strong>
+      Why can insertion at the beginning be O(1)?
+    </strong>
+
+    <p>
+      We do not need to visit every node. We only create the new node,
+      connect its next reference to the current head, and update head
+      to point to the new node. The number of operations stays constant
+      regardless of the size of the linked list.
+    </p>
+
+  </div>
+
+</section>
+
+)}
+
+{lesson.deletion && (
+
+<section className="lesson-section">
+
+  <p className="section-label">
+    Linked List Deletion
+  </p>
+
+  <h2>
+    {lesson.deletion.title}
+  </h2>
+
+  <p className="lesson-body">
+    {lesson.deletion.explanation}
+  </p>
+
+  <h3>
+    Python Example
+  </h3>
+
+  <pre className="python-code">
+    <code>
+      {lesson.deletion.code}
+    </code>
+  </pre>
+
+  <h3>
+    Step-by-Step
+  </h3>
+
+  <ul className="algorithm-steps">
+
+    {lesson.deletion.steps.map((step) => (
+
+      <li key={step}>
+        {step}
+      </li>
+
+    ))}
+
+  </ul>
+
+
+  {lesson.deletion.visualization && (
+
+    <div className="deletion-visualization">
+
+      <h3>
+        Before Deletion
+      </h3>
+
+      <div className="linked-list-display">
+
+        {lesson.deletion.visualization.before.map((value) => (
+
+          <div
+            className={`linked-node ${
+              value === lesson.deletion.visualization.removedValue
+                ? 'deleted-linked-node'
+                : ''
+            }`}
+            key={`delete-before-${value}`}
+          >
+
+            <div className="node-box">
+
+              <div className="node-data">
+                {value}
+              </div>
+
+              <div className="node-next">
+                next
+              </div>
+
+            </div>
+
+            <div className="node-pointer">
+              →
+            </div>
+
+          </div>
+
+        ))}
+
+        <div className="null-node">
+          None
+        </div>
+
+      </div>
+
+
+      <div className="deletion-action">
+        Remove {lesson.deletion.visualization.removedValue}
+      </div>
+
+
+      <h3>
+        After Deletion
+      </h3>
+
+      <div className="linked-list-display">
+
+        {lesson.deletion.visualization.after.map((value) => (
+
+          <div
+            className="linked-node"
+            key={`delete-after-${value}`}
+          >
+
+            <div className="node-box">
+
+              <div className="node-data">
+                {value}
+              </div>
+
+              <div className="node-next">
+                next
+              </div>
+
+            </div>
+
+            <div className="node-pointer">
+              →
+            </div>
+
+          </div>
+
+        ))}
+
+        <div className="null-node">
+          None
+        </div>
+
+      </div>
+
+    </div>
+
+  )}
+
+
+  <div className="why-box">
+
+    <strong>
+      What is the time complexity?
+    </strong>
+
+    <p>
+      If we already know the previous node, changing its next reference
+      takes O(1) time. If we must first search through the list to find
+      the node, the complete deletion operation can take O(n) time.
+    </p>
+
+  </div>
+
+</section>
+
+)}
+
+{lesson.search && (
+
+<section className="lesson-section">
+
+  <p className="section-label">
+    Linked List Search
+  </p>
+
+  <h2>
+    {lesson.search.title}
+  </h2>
+
+  <p className="lesson-body">
+    {lesson.search.explanation}
+  </p>
+
+
+  <h3>
+    Python Example
+  </h3>
+
+  <pre className="python-code">
+    <code>
+      {lesson.search.code}
+    </code>
+  </pre>
+
+
+  <h3>
+    Line-by-Line Explanation
+  </h3>
+
+  <div className="code-explanations">
+
+    {lesson.search.lineByLine.map((item) => (
+
+      <div
+        className="code-explanation"
+        key={item.line}
+      >
+
+        <code>
+          {item.line}
+        </code>
+
+        <p>
+          {item.explanation}
+        </p>
+
+      </div>
+
+    ))}
+
+  </div>
+
+
+  <h3>
+    Search Trace: Find {lesson.search.target}
+  </h3>
+
+  <div className="search-trace">
+
+    {lesson.search.trace.map((step, index) => (
+
+      <article
+        className={`search-step ${
+          step.node === lesson.search.target
+            ? 'search-found'
+            : ''
+        }`}
+        key={step.node}
+      >
+
+        <span className="search-step-number">
+          Step {index + 1}
+        </span>
+
+        <div className="search-node">
+          {step.node}
+        </div>
+
+        <p>
+          {step.message}
+        </p>
+
+      </article>
+
+    ))}
+
+  </div>
+
+
+  <div className="why-box">
+
+    <strong>
+      Why is searching O(n)?
+    </strong>
+
+    <p>
+      {lesson.search.why}
+    </p>
+
+  </div>
+
+</section>
+
+)}
+
+{lesson.commonMistakes && (
+  <section className="lesson-section">
+    <p className="section-label">
+      Common Mistakes
+    </p>
+
+    <h2>
+      {lesson.commonMistakes.title}
+    </h2>
+
+    <p className="lesson-body">
+      {lesson.commonMistakes.introduction}
+    </p>
+
+    <div className="common-mistakes-grid">
+      {lesson.commonMistakes.mistakes.map((mistake) => (
+        <article
+          className="mistake-card"
+          key={mistake.title}
+        >
+          <h3>{mistake.title}</h3>
+
+          <p className="mistake-problem">
+            {mistake.problem}
+          </p>
+
+          <div className="mistake-code-grid">
+
+            <div className="code-example bad-example">
+              <span className="code-label">
+                ❌ Incorrect
+              </span>
+
+              <pre className="python-code">
+                <code>{mistake.badCode}</code>
+              </pre>
+            </div>
+
+            <div className="code-example good-example">
+              <span className="code-label">
+                ✓ Correct
+              </span>
+
+              <pre className="python-code">
+                <code>{mistake.goodCode}</code>
+              </pre>
+            </div>
+
+          </div>
+
+          <div className="mistake-lesson">
+            <strong>Remember:</strong>
+            <p>{mistake.lesson}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+{lesson.practice && (
+  <section className="lesson-section">
+    <p className="section-label">
+      Practice
+    </p>
+
+    <h2>{lesson.practice.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.practice.introduction}
+    </p>
+
+    <div className="practice-grid">
+      {lesson.practice.questions.map((question, index) => (
+        <article
+          className="practice-card"
+          key={question.question}
+        >
+          <div className="practice-header">
+            <span className="practice-number">
+              Question {index + 1}
+            </span>
+
+            <span className="practice-category">
+              {question.category}
+            </span>
+          </div>
+
+          <h3>{question.question}</h3>
+
+          {question.code && (
+            <pre className="python-code">
+              <code>{question.code}</code>
+            </pre>
+          )}
+
+          <details className="practice-answer">
+            <summary>
+              Reveal Answer
+            </summary>
+
+            <div className="practice-answer-content">
+              <strong>
+                Answer: {question.answer}
+              </strong>
+
+              <p>
+                {question.explanation}
+              </p>
+            </div>
+          </details>
+        </article>
+      ))}
+    </div>
+  </section>
+)}
+
+
+
             {lesson.recursion && (
             <section className="lesson-section">
                 
