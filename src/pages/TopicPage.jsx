@@ -118,6 +118,1146 @@ function TopicPage() {
             ))}
           </div>
         </section>
+
+        {lesson.treeAnatomy && (
+  <section className="lesson-section tree-anatomy-section">
+    <p className="section-label">Tree Fundamentals</p>
+
+    <h2>{lesson.treeAnatomy.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.treeAnatomy.introduction}
+    </p>
+
+    <div className="tree-visual">
+
+    <svg
+  className="tree-branches"
+  viewBox="0 0 100 100"
+  preserveAspectRatio="none"
+  aria-hidden="true"
+>
+  <line x1="50" y1="13" x2="35" y2="50" />
+  <line x1="50" y1="13" x2="65" y2="50" />
+
+  <line x1="35" y1="50" x2="20" y2="87" />
+  <line x1="35" y1="50" x2="40" y2="87" />
+
+  <line x1="65" y1="50" x2="60" y2="87" />
+  <line x1="65" y1="50" x2="80" y2="87" />
+</svg>
+        
+      {lesson.treeAnatomy.example.levels.map((level, levelIndex) => (
+        <div
+          className={`tree-level tree-level-${levelIndex}`}
+          key={levelIndex}
+        >
+          {level.map((node) => (
+            <div className="tree-node" key={node}>
+              {node}
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+
+    <div className="tree-relationships">
+      {lesson.treeAnatomy.relationships.map((relationship) => (
+        <article
+          className="tree-relationship-card"
+          key={relationship.label}
+        >
+          <div className="tree-relationship-heading">
+            <h3>{relationship.label}</h3>
+            <span>{relationship.example}</span>
+          </div>
+
+          <p>{relationship.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="tree-measurements">
+      <article className="tree-measurement-card">
+        <h3>{lesson.treeAnatomy.depthExample.title}</h3>
+
+        <p>{lesson.treeAnatomy.depthExample.explanation}</p>
+
+        <div className="depth-list">
+          {lesson.treeAnatomy.depthExample.rows.map((row) => (
+            <div className="depth-row" key={row.node}>
+              <span className="depth-node">Node {row.node}</span>
+
+              <span className="depth-badge">
+                Depth {row.depth}
+              </span>
+
+              <p>{row.reason}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article className="tree-measurement-card">
+        <h3>{lesson.treeAnatomy.heightExample.title}</h3>
+
+        <p>{lesson.treeAnatomy.heightExample.explanation}</p>
+
+        <div className="height-result">
+          <span>Tree Height</span>
+
+          <strong>
+            {lesson.treeAnatomy.heightExample.treeHeight}
+          </strong>
+        </div>
+
+        <p>{lesson.treeAnatomy.heightExample.reason}</p>
+      </article>
+    </div>
+  </section>
+)}
+
+{lesson.binaryTreeComparison && (
+  <section className="lesson-section binary-tree-section">
+    <p className="section-label">
+      Tree Types
+    </p>
+
+    <h2>{lesson.binaryTreeComparison.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.binaryTreeComparison.introduction}
+    </p>
+
+    <div className="binary-tree-comparison">
+      {[
+        lesson.binaryTreeComparison.binaryTree,
+        lesson.binaryTreeComparison.binarySearchTree
+      ].map((tree, index) => (
+        <article
+          className="binary-tree-card"
+          key={tree.title}
+        >
+          <div className="binary-tree-card-heading">
+            <h3>{tree.title}</h3>
+
+            <span
+              className={
+                index === 0
+                  ? 'tree-type-badge'
+                  : 'tree-type-badge bst-badge'
+              }
+            >
+              {index === 0
+                ? 'Shape Rule'
+                : 'Ordering Rule'}
+            </span>
+          </div>
+
+          <p className="binary-tree-rule">
+            {tree.rule}
+          </p>
+
+          <p className="binary-tree-explanation">
+            {tree.explanation}
+          </p>
+
+          <div className="mini-tree-visual">
+            <svg
+              className="mini-tree-branches"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <line x1="50" y1="13" x2="35" y2="50" />
+              <line x1="50" y1="13" x2="65" y2="50" />
+
+              <line x1="35" y1="50" x2="20" y2="87" />
+              <line x1="35" y1="50" x2="40" y2="87" />
+
+              <line x1="65" y1="50" x2="60" y2="87" />
+              <line x1="65" y1="50" x2="80" y2="87" />
+            </svg>
+
+            {tree.levels.map((level, levelIndex) => (
+              <div
+                className={`mini-tree-level mini-tree-level-${levelIndex}`}
+                key={levelIndex}
+              >
+                {level.map((node) => (
+                  <span
+                    className="mini-tree-node"
+                    key={node}
+                  >
+                    {node}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div className="bst-rules">
+      <h3>BST Ordering Rules</h3>
+
+      {lesson.binaryTreeComparison.rules.map((rule) => (
+        <div className="bst-rule" key={rule.label}>
+          <strong>{rule.label}</strong>
+          <p>{rule.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+
+      <p>
+        {lesson.binaryTreeComparison.keyIdea}
+      </p>
+    </div>
+  </section>
+)}
+{lesson.bstPython && (
+  <section className="lesson-section bst-python-section">
+    <p className="section-label">
+      Python Implementation
+    </p>
+
+    <h2>{lesson.bstPython.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.bstPython.introduction}
+    </p>
+
+    <div className="bst-python-block">
+      <h3>{lesson.bstPython.nodeClass.title}</h3>
+
+      <pre className="python-code">
+        <code>{lesson.bstPython.nodeClass.code}</code>
+      </pre>
+
+      <h4>Line-by-Line Explanation</h4>
+
+      <div className="code-explanations">
+        {lesson.bstPython.nodeClass.lineByLine.map((item) => (
+          <div
+            className="code-explanation"
+            key={item.line}
+          >
+            <code>{item.line}</code>
+            <p>{item.explanation}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="bst-python-block">
+      <h3>{lesson.bstPython.search.title}</h3>
+
+      <p className="bst-python-description">
+        {lesson.bstPython.search.explanation}
+      </p>
+
+      <pre className="python-code">
+        <code>{lesson.bstPython.search.code}</code>
+      </pre>
+
+      <h4>Line-by-Line Explanation</h4>
+
+      <div className="code-explanations">
+        {lesson.bstPython.search.lineByLine.map((item) => (
+          <div
+            className="code-explanation"
+            key={item.line}
+          >
+            <code>{item.line}</code>
+            <p>{item.explanation}</p>
+          </div>
+        ))}
+      </div>
+
+      <h4>
+        Search Trace: Find {lesson.bstPython.search.target}
+      </h4>
+
+      <div className="bst-search-trace">
+        {lesson.bstPython.search.trace.map((step, index) => (
+          <div
+            className="bst-search-step"
+            key={step.node}
+          >
+            <span className="bst-search-step-number">
+              Step {index + 1}
+            </span>
+
+            <div className="bst-search-node">
+              {step.node}
+            </div>
+
+            <p>{step.decision}</p>
+
+            {index !== lesson.bstPython.search.trace.length - 1 && (
+              <span className="bst-search-arrow">
+                →
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="bst-complexity">
+        <h4>Search Complexity</h4>
+
+        <div className="bst-complexity-grid">
+          <div className="bst-complexity-card">
+            <span>Balanced BST</span>
+            <strong>
+              {lesson.bstPython.search.complexity.balanced}
+            </strong>
+          </div>
+
+          <div className="bst-complexity-card worst-case">
+            <span>Worst Case</span>
+            <strong>
+              {lesson.bstPython.search.complexity.worst}
+            </strong>
+          </div>
+        </div>
+
+        <p>
+          {lesson.bstPython.search.complexity.explanation}
+        </p>
+      </div>
+    </div>
+  </section>
+)}
+{lesson.balanceConcept && (
+  <section className="lesson-section balance-section">
+    <p className="section-label">
+      Balanced Search Trees
+    </p>
+
+    <h2>{lesson.balanceConcept.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.balanceConcept.introduction}
+    </p>
+
+    <div className="balance-comparison">
+      <article className="balance-card balanced-card">
+        <h3>{lesson.balanceConcept.balanced.title}</h3>
+
+        <p>{lesson.balanceConcept.balanced.explanation}</p>
+
+        <div className="mini-tree-visual balance-tree-visual">
+          <svg
+            className="mini-tree-branches"
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <line x1="50" y1="13" x2="35" y2="50" />
+            <line x1="50" y1="13" x2="65" y2="50" />
+            <line x1="35" y1="50" x2="20" y2="87" />
+            <line x1="35" y1="50" x2="40" y2="87" />
+            <line x1="65" y1="50" x2="60" y2="87" />
+            <line x1="65" y1="50" x2="80" y2="87" />
+          </svg>
+
+          {lesson.balanceConcept.balanced.levels.map(
+            (level, levelIndex) => (
+              <div
+                className={`mini-tree-level mini-tree-level-${levelIndex}`}
+                key={levelIndex}
+              >
+                {level.map((node) => (
+                  <span className="mini-tree-node" key={node}>
+                    {node}
+                  </span>
+                ))}
+              </div>
+            )
+          )}
+        </div>
+
+        <div className="balance-stats">
+          <div>
+            <span>Height</span>
+            <strong>{lesson.balanceConcept.balanced.height}</strong>
+          </div>
+
+          <div>
+            <span>Search</span>
+            <strong>
+              {lesson.balanceConcept.balanced.searchComplexity}
+            </strong>
+          </div>
+        </div>
+
+        <p className="balance-reason">
+          {lesson.balanceConcept.balanced.reason}
+        </p>
+      </article>
+
+      <article className="balance-card unbalanced-card">
+        <h3>{lesson.balanceConcept.unbalanced.title}</h3>
+
+        <p>{lesson.balanceConcept.unbalanced.explanation}</p>
+
+        <p className="insertion-order">
+          <strong>Insertion order:</strong>{' '}
+          {lesson.balanceConcept.unbalanced.insertionOrder.join(', ')}
+        </p>
+
+        <div className="unbalanced-tree-visual">
+          {lesson.balanceConcept.unbalanced.path.map(
+            (node, index) => (
+              <div className="unbalanced-tree-step" key={node}>
+                <span className="unbalanced-tree-node">
+                  {node}
+                </span>
+
+                {index !==
+                  lesson.balanceConcept.unbalanced.path.length - 1 && (
+                  <span className="unbalanced-tree-arrow">↓</span>
+                )}
+              </div>
+            )
+          )}
+        </div>
+
+        <div className="balance-stats">
+          <div>
+            <span>Height</span>
+            <strong>{lesson.balanceConcept.unbalanced.height}</strong>
+          </div>
+
+          <div>
+            <span>Search</span>
+            <strong>
+              {lesson.balanceConcept.unbalanced.searchComplexity}
+            </strong>
+          </div>
+        </div>
+
+        <p className="balance-reason">
+          {lesson.balanceConcept.unbalanced.reason}
+        </p>
+      </article>
+    </div>
+
+    <h3 className="balance-table-title">
+      Balanced vs. Unbalanced
+    </h3>
+
+    <div className="balance-table-wrapper">
+      <table className="balance-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Balanced BST</th>
+            <th>Unbalanced BST</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {lesson.balanceConcept.comparison.map((row) => (
+            <tr key={row.feature}>
+              <td>{row.feature}</td>
+              <td>{row.balanced}</td>
+              <td>{row.unbalanced}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.balanceConcept.keyIdea}</p>
+    </div>
+  </section>
+)}
+{lesson.selfBalancingTrees && (
+  <section className="lesson-section self-balancing-section">
+    <p className="section-label">
+      Self-Balancing Trees
+    </p>
+
+    <h2>{lesson.selfBalancingTrees.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.selfBalancingTrees.introduction}
+    </p>
+
+    <div className="avl-introduction">
+      <h3>{lesson.selfBalancingTrees.avl.title}</h3>
+
+      <p>{lesson.selfBalancingTrees.avl.explanation}</p>
+
+      <div className="balance-factor-box">
+        <span>Balance Factor</span>
+
+        <code>
+          {lesson.selfBalancingTrees.avl.balanceFactor.formula}
+        </code>
+
+        <div className="balance-factor-allowed">
+          Allowed: {lesson.selfBalancingTrees.avl.balanceFactor.allowed}
+        </div>
+
+        <p>
+          {lesson.selfBalancingTrees.avl.balanceFactor.explanation}
+        </p>
+      </div>
+    </div>
+
+    <div className="rotation-section">
+      <h3>
+        {lesson.selfBalancingTrees.rotationExample.title}
+      </h3>
+
+      <p>
+        {lesson.selfBalancingTrees.rotationExample.introduction}
+      </p>
+
+      <div className="rotation-comparison">
+        <article className="rotation-card rotation-before">
+          <h4>Before Rotation</h4>
+
+          <p>
+            Insertion order:{' '}
+            <strong>
+              {lesson.selfBalancingTrees.rotationExample.insertionOrder.join(
+                ', '
+              )}
+            </strong>
+          </p>
+
+          <div className="rotation-chain">
+            {lesson.selfBalancingTrees.rotationExample.before.path.map(
+              (node, index) => (
+                <div className="rotation-chain-step" key={node}>
+                  <span>{node}</span>
+
+                  {index !==
+                    lesson.selfBalancingTrees.rotationExample.before.path
+                      .length -
+                      1 && <span className="rotation-chain-arrow">↓</span>}
+                </div>
+              )
+            )}
+          </div>
+
+          <div className="rotation-stats">
+            <span>
+              Height{' '}
+              <strong>
+                {lesson.selfBalancingTrees.rotationExample.before.height}
+              </strong>
+            </span>
+
+            <span>
+              Balance Factor{' '}
+              <strong>
+                {
+                  lesson.selfBalancingTrees.rotationExample.before
+                    .balanceFactor
+                }
+              </strong>
+            </span>
+          </div>
+        </article>
+
+        <div className="rotation-action">
+          <span>↻</span>
+          <strong>
+            {lesson.selfBalancingTrees.rotationExample.rotation}
+          </strong>
+        </div>
+
+        <article className="rotation-card rotation-after">
+          <h4>After Rotation</h4>
+
+          <div className="rotation-tree">
+            <svg
+              className="rotation-tree-branches"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <line x1="50" y1="25" x2="30" y2="75" />
+              <line x1="50" y1="25" x2="70" y2="75" />
+            </svg>
+
+            {lesson.selfBalancingTrees.rotationExample.after.levels.map(
+              (level, levelIndex) => (
+                <div
+                  className={`rotation-tree-level rotation-tree-level-${levelIndex}`}
+                  key={levelIndex}
+                >
+                  {level.map((node) => (
+                    <span className="rotation-tree-node" key={node}>
+                      {node}
+                    </span>
+                  ))}
+                </div>
+              )
+            )}
+          </div>
+
+          <div className="rotation-stats">
+            <span>
+              Height{' '}
+              <strong>
+                {lesson.selfBalancingTrees.rotationExample.after.height}
+              </strong>
+            </span>
+
+            <span>
+              Balanced <strong>✓</strong>
+            </span>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div className="rotation-steps">
+      <h3>Step-by-Step</h3>
+
+      <ol>
+        {lesson.selfBalancingTrees.rotationExample.steps.map((step) => (
+          <li key={step}>{step}</li>
+        ))}
+      </ol>
+    </div>
+
+    <div className="avl-complexity">
+      <h3>AVL Tree Complexity</h3>
+
+      <div className="avl-complexity-grid">
+        {lesson.selfBalancingTrees.complexity.map((item) => (
+          <div className="avl-complexity-card" key={item.operation}>
+            <span>{item.operation}</span>
+            <strong>{item.complexity}</strong>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.selfBalancingTrees.keyIdea}</p>
+    </div>
+  </section>
+)}
+
+{lesson.heapConcept && (
+          <section className="lesson-section">
+            <p className="section-label">Heap Fundamentals</p>
+            <h2>{lesson.heapConcept.title}</h2>
+
+            <p className="lesson-body">
+              {lesson.heapConcept.introduction}
+            </p>
+
+            <div className="key-idea">
+              <strong>Key idea:</strong>
+              <p>{lesson.heapConcept.keyIdea}</p>
+            </div>
+
+            <div className="heap-properties">
+              {lesson.heapConcept.properties.map((property) => (
+                <article className="heap-property-card" key={property.label}>
+                  <h3>{property.label}</h3>
+                  <p>{property.explanation}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="heap-type-grid">
+              {[
+                {
+                  ...lesson.heapConcept.minHeap,
+                  type: 'min'
+                },
+                {
+                  ...lesson.heapConcept.maxHeap,
+                  type: 'max'
+                }
+              ].map((heap) => (
+                <article
+                  className={`heap-type-card heap-type-card-${heap.type}`}
+                  key={heap.title}
+                >
+                  <div className="heap-type-heading">
+                    <h3>{heap.title}</h3>
+
+                    <span className="heap-root-badge">
+                      Root: {heap.rootValue}
+                    </span>
+                  </div>
+
+                  <p className="heap-rule">{heap.rule}</p>
+                  <p>{heap.explanation}</p>
+
+                  <div className="heap-tree-visual">
+                    <svg
+                      className="heap-tree-lines"
+                      viewBox="0 0 600 280"
+                      preserveAspectRatio="none"
+                      aria-hidden="true"
+                    >
+                      <line x1="300" y1="45" x2="200" y2="130" />
+                      <line x1="300" y1="45" x2="400" y2="130" />
+
+                      <line x1="200" y1="130" x2="75" y2="225" />
+                      <line x1="200" y1="130" x2="225" y2="225" />
+
+                      <line x1="400" y1="130" x2="375" y2="225" />
+                      <line x1="400" y1="130" x2="525" y2="225" />
+                    </svg>
+
+                    {heap.levels.map((level, levelIndex) => (
+                      <div
+                        className={`heap-tree-level heap-tree-level-${levelIndex}`}
+                        key={`${heap.title}-level-${levelIndex}`}
+                      >
+                        {level.map((value, nodeIndex) => (
+                          <span
+                            className={`heap-tree-node ${
+                              levelIndex === 0 ? 'heap-root-node' : ''
+                            }`}
+                            key={`${heap.title}-${value}-${nodeIndex}`}
+                          >
+                            {value}
+                          </span>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="heap-comparison">
+              <h3>Min-Heap vs. Max-Heap</h3>
+
+              <div className="growth-table-wrapper">
+                <table className="growth-table heap-comparison-table">
+                  <thead>
+                    <tr>
+                      <th>Feature</th>
+                      <th>Min-Heap</th>
+                      <th>Max-Heap</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {lesson.heapConcept.comparison.map((row) => (
+                      <tr key={row.feature}>
+                        <th scope="row">{row.feature}</th>
+                        <td>{row.minHeap}</td>
+                        <td>{row.maxHeap}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="heap-note">
+              <strong>Remember:</strong>
+              <p>{lesson.heapConcept.note}</p>
+            </div>
+          </section>
+        )}
+                {lesson.heapArrayRepresentation && (
+          <section className="lesson-section">
+            <p className="section-label">Heap Storage</p>
+            <h2>{lesson.heapArrayRepresentation.title}</h2>
+
+            <p className="lesson-body">
+              {lesson.heapArrayRepresentation.introduction}
+            </p>
+
+            <div className="heap-array-wrapper">
+              <div className="heap-array">
+                {lesson.heapArrayRepresentation.values.map((value, index) => (
+                  <div className="heap-array-cell" key={`${value}-${index}`}>
+                    <span>Index {index}</span>
+                    <strong>{value}</strong>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="heap-array-table-section">
+              <h3>Array Index to Tree Position</h3>
+
+              <div className="growth-table-wrapper">
+                <table className="growth-table heap-array-table">
+                  <thead>
+                    <tr>
+                      <th>Array index</th>
+                      <th>Stored value</th>
+                      <th>Tree relationship</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+                    {lesson.heapArrayRepresentation.rows.map((row) => (
+                      <tr key={row.index}>
+                        <td>{row.index}</td>
+                        <td>{row.value}</td>
+                        <td>{row.relationship}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div className="heap-formulas">
+              {lesson.heapArrayRepresentation.formulas.map((item) => (
+                <article className="heap-formula-card" key={item.label}>
+                  <h3>{item.label}</h3>
+                  <code>{item.formula}</code>
+                  <p>{item.explanation}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="heap-index-example">
+              <p className="section-label">Index Example</p>
+
+              <h3>
+                Node {lesson.heapArrayRepresentation.example.value} at index{' '}
+                {lesson.heapArrayRepresentation.example.index}
+              </h3>
+
+              <div className="heap-index-results">
+                <article>
+                  <span>Parent</span>
+                  <strong>
+                    Index {lesson.heapArrayRepresentation.example.parentIndex}
+                  </strong>
+                  <p>
+                    Value {lesson.heapArrayRepresentation.example.parentValue}
+                  </p>
+                </article>
+
+                <article>
+                  <span>Left child</span>
+                  <strong>
+                    Index{' '}
+                    {lesson.heapArrayRepresentation.example.leftChildIndex}
+                  </strong>
+                  <p>
+                    Value{' '}
+                    {lesson.heapArrayRepresentation.example.leftChildValue}
+                  </p>
+                </article>
+
+                <article>
+                  <span>Right child</span>
+                  <strong>
+                    Index{' '}
+                    {lesson.heapArrayRepresentation.example.rightChildIndex}
+                  </strong>
+                  <p>
+                    Value{' '}
+                    {lesson.heapArrayRepresentation.example.rightChildValue}
+                  </p>
+                </article>
+              </div>
+            </div>
+
+            <div className="key-idea">
+              <strong>Remember:</strong>
+              <p>{lesson.heapArrayRepresentation.keyIdea}</p>
+            </div>
+          </section>
+        )}
+                {lesson.heapOperations && (
+          <section className="lesson-section">
+            <p className="section-label">Heap Operations</p>
+            <h2>{lesson.heapOperations.title}</h2>
+
+            <p className="lesson-body">
+              {lesson.heapOperations.introduction}
+            </p>
+
+            <div className="heap-operation-grid">
+              {[
+                {
+                  ...lesson.heapOperations.insertion,
+                  type: 'insertion'
+                },
+                {
+                  ...lesson.heapOperations.removal,
+                  type: 'removal'
+                }
+              ].map((operation) => (
+                <article
+                  className={`heap-operation-card heap-operation-${operation.type}`}
+                  key={operation.type}
+                >
+                  <div className="heap-operation-heading">
+                    <h3>{operation.title}</h3>
+                    <span>{operation.complexity}</span>
+                  </div>
+
+                  <p>{operation.explanation}</p>
+
+                  <div className="heap-operation-start">
+                    <h4>Starting Heap</h4>
+
+                    <div className="heap-operation-array">
+                      {operation.startingHeap.map((value, index) => (
+                        <span key={`${operation.type}-start-${index}`}>
+                          {value}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  <h4>Step-by-Step</h4>
+
+                  <div className="heap-operation-steps">
+                    {operation.steps.map((step, stepIndex) => (
+                      <article
+                        className="heap-operation-step"
+                        key={step.label}
+                      >
+                        <div className="heap-operation-step-heading">
+                          <span>Step {stepIndex + 1}</span>
+                          <h4>{step.label}</h4>
+                        </div>
+
+                        <div className="heap-operation-array">
+                          {step.heap.map((value, valueIndex) => (
+                            <span
+                              key={`${step.label}-${valueIndex}`}
+                            >
+                              {value}
+                            </span>
+                          ))}
+                        </div>
+
+                        <p>{step.explanation}</p>
+                      </article>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="heap-operation-complexity">
+              <h3>Heap Operation Complexity</h3>
+
+              <div className="heap-operation-complexity-grid">
+                {lesson.heapOperations.complexities.map((item) => (
+                  <article key={item.operation}>
+                    <span>{item.operation}</span>
+                    <strong>{item.complexity}</strong>
+                  </article>
+                ))}
+              </div>
+            </div>
+
+            <div className="key-idea">
+              <strong>Remember:</strong>
+              <p>{lesson.heapOperations.keyIdea}</p>
+            </div>
+          </section>
+        )}
+        {lesson.pythonHeapq && (
+  <section className="lesson-section">
+    <p className="section-label">Python Heaps</p>
+    <h2>{lesson.pythonHeapq.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.pythonHeapq.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.pythonHeapq.keyIdea}</p>
+    </div>
+
+    <div className="heapq-example">
+      <h3>{lesson.pythonHeapq.example.title}</h3>
+
+      <h4>Python Example</h4>
+
+      <pre className="python-code">
+        <code>{lesson.pythonHeapq.example.code}</code>
+      </pre>
+
+      <div className="heapq-output">
+        <strong>Output</strong>
+        <pre>
+          <code>{lesson.pythonHeapq.example.output}</code>
+        </pre>
+      </div>
+
+      <h4>Line-by-Line Explanation</h4>
+
+      <div className="code-explanations">
+        {lesson.pythonHeapq.example.lineByLine.map((item) => (
+          <div className="code-explanation" key={item.line}>
+            <code>{item.line}</code>
+            <p>{item.explanation}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="heapq-operations">
+      <h3>Common heapq Operations</h3>
+
+      <div className="heapq-operation-grid">
+        {lesson.pythonHeapq.operations.map((item) => (
+          <article className="heapq-operation-card" key={item.name}>
+            <div className="heapq-operation-heading">
+              <h4>{item.name}</h4>
+              <span>{item.complexity}</span>
+            </div>
+
+            <code>{item.code}</code>
+            <p>{item.explanation}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="priority-queue-section">
+      <p className="section-label">Priority Queue</p>
+      <h3>{lesson.pythonHeapq.priorityQueue.title}</h3>
+
+      <p>{lesson.pythonHeapq.priorityQueue.explanation}</p>
+
+      <pre className="python-code">
+        <code>{lesson.pythonHeapq.priorityQueue.code}</code>
+      </pre>
+
+      <h4>Removal Order</h4>
+
+      <div className="priority-queue-order">
+        {[...lesson.pythonHeapq.priorityQueue.steps]
+          .sort((a, b) => a.priority - b.priority)
+          .map((item, index) => (
+            <article key={item.task}>
+              <span>Removed {index + 1}</span>
+              <strong>Priority {item.priority}</strong>
+              <p>{item.task}</p>
+            </article>
+          ))}
+      </div>
+
+      <div className="heapq-output">
+        <strong>Output</strong>
+        <pre>
+          <code>{lesson.pythonHeapq.priorityQueue.output}</code>
+        </pre>
+      </div>
+
+      <div className="key-idea">
+        <strong>Remember:</strong>
+        <p>{lesson.pythonHeapq.priorityQueue.note}</p>
+      </div>
+    </div>
+  </section>
+)}
+{lesson.treeStructureSelection && (
+  <section className="lesson-section">
+    <p className="section-label">Structure Selection</p>
+    <h2>{lesson.treeStructureSelection.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.treeStructureSelection.introduction}
+    </p>
+
+    <div className="tree-selection-grid">
+      {lesson.treeStructureSelection.structures.map((structure) => (
+        <article
+          className="tree-selection-card"
+          key={structure.name}
+        >
+          <h3>{structure.name}</h3>
+
+          <div className="tree-selection-description">
+            <strong>Best used for</strong>
+            <p>{structure.bestFor}</p>
+          </div>
+
+          <div className="tree-selection-description">
+            <strong>Strength</strong>
+            <p>{structure.strength}</p>
+          </div>
+
+          <div className="tree-selection-warning">
+            <strong>Be careful</strong>
+            <p>{structure.caution}</p>
+          </div>
+
+          <div className="tree-selection-complexity">
+            <div>
+              <span>Search</span>
+              <strong>{structure.search}</strong>
+            </div>
+
+            <div>
+              <span>Modification</span>
+              <strong>{structure.modification}</strong>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div className="tree-selection-scenarios">
+      <h3>Which Structure Should I Choose?</h3>
+
+      <p>
+        Read each situation and decide which structure would be the
+        best choice.
+      </p>
+
+      <div className="tree-scenario-grid">
+        {lesson.treeStructureSelection.scenarios.map(
+          (scenario, index) => (
+            <article
+              className="tree-scenario-card"
+              key={scenario.problem}
+            >
+              <span>Scenario {index + 1}</span>
+              <h4>{scenario.problem}</h4>
+
+              <details>
+                <summary>Reveal Answer</summary>
+
+                <div className="tree-scenario-answer">
+                  <strong>{scenario.answer}</strong>
+                  <p>{scenario.reason}</p>
+                </div>
+              </details>
+            </article>
+          )
+        )}
+      </div>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.treeStructureSelection.keyIdea}</p>
+    </div>
+  </section>
+)}
+
         {lesson.hashingProcess && (
   <section className="lesson-section">
     <p className="section-label">
