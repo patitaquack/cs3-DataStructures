@@ -1047,7 +1047,278 @@ export const treesLesson = {
       
         keyIdea:
           'Rotations change the shape of the tree without breaking the Binary Search Tree ordering property. Keeping the height near O(log n) keeps search, insertion, and deletion efficient.'
-      }
+      },
+      commonMistakes: {
+        title: 'Common Tree and Heap Mistakes',
+
+        introduction:
+          'Trees and heaps follow specific structural rules. Confusing those rules can produce incorrect searches, misleading complexity claims, and unexpected priority-queue behavior.',
+
+        mistakes: [
+          {
+            title: 'Treating Every Binary Tree as a Binary Search Tree',
+
+            problem:
+              'Comparing the target with the current node only tells us which direction to move when the tree follows the Binary Search Tree ordering property.',
+
+            badCode: [
+              '# This is not safe for an ordinary binary tree',
+              'current = root',
+              '',
+              'if target < current.data:',
+              '    current = current.left',
+              'else:',
+              '    current = current.right'
+            ].join('\n'),
+
+            goodCode: [
+              'def contains(node, target):',
+              '    if node is None:',
+              '        return False',
+              '',
+              '    if node.data == target:',
+              '        return True',
+              '',
+              '    return (',
+              '        contains(node.left, target)',
+              '        or contains(node.right, target)',
+              '    )'
+            ].join('\n'),
+
+            lesson:
+              'A general binary tree has no value-ordering guarantee, so both subtrees may need to be searched. Directional searching works only in a BST.'
+          },
+
+          {
+            title: 'Assuming Every BST Search Is O(log n)',
+
+            problem:
+              'A regular Binary Search Tree can become a long chain when values are inserted in an unfavorable order.',
+
+            badCode: [
+              '# Incorrect assumption:',
+              '# Every BST search is O(log n)'
+            ].join('\n'),
+
+            goodCode: [
+              '# Balanced BST search: O(log n)',
+              '# Unbalanced BST search: O(n)'
+            ].join('\n'),
+
+            lesson:
+              'O(log n) search depends on the tree remaining balanced. In the worst case, an ordinary BST behaves like a linked list.'
+          },
+
+          {
+            title: 'Assuming a Heap Is Completely Sorted',
+
+            problem:
+              'A heap only guarantees the correct relationship between each parent and its children. The entire array is not stored in sorted order.',
+
+            badCode: [
+              'import heapq',
+              '',
+              'values = [30, 10, 20, 40]',
+              'heapq.heapify(values)',
+              '',
+              '# This does not print the values in sorted order',
+              'print(values)'
+            ].join('\n'),
+
+            goodCode: [
+              'import heapq',
+              '',
+              'values = [30, 10, 20, 40]',
+              'heapq.heapify(values)',
+              '',
+              'while values:',
+              '    print(heapq.heappop(values))'
+            ].join('\n'),
+
+            lesson:
+              'Use repeated heappop() operations when values must be removed in priority order. Do not treat the heap array as a sorted list.'
+          },
+
+          {
+            title: 'Reversing Python Priority Numbers',
+
+            problem:
+              'Python heapq is a min-heap, so the tuple with the smallest first value is removed first.',
+
+            badCode: [
+              'patients = []',
+              '',
+              '# Critical was given a larger number',
+              'heapq.heappush(patients, (3, "Critical"))',
+              'heapq.heappush(patients, (1, "Routine"))'
+            ].join('\n'),
+
+            goodCode: [
+              'patients = []',
+              '',
+              '# Smaller number means higher priority',
+              'heapq.heappush(patients, (1, "Critical"))',
+              'heapq.heappush(patients, (3, "Routine"))'
+            ].join('\n'),
+
+            lesson:
+              'With Python heapq, smaller priority numbers come out first. Assign priority values consistently with that rule.'
+          }
+        ]
+      },
+      practice: {
+        title: 'Check Your Understanding',
+
+        introduction:
+          'Use these questions to practice tree vocabulary, BST searching, balancing, heaps, priority queues, and Big-O analysis.',
+
+        questions: [
+          {
+            category: 'Tree Anatomy',
+
+            question:
+              'If the root has depth 0, what is the depth of a grandchild of the root?',
+
+            answer: '2',
+
+            explanation:
+              'Depth counts edges from the root. One edge reaches the child, and a second edge reaches the grandchild.'
+          },
+
+          {
+            category: 'BST Search',
+
+            question:
+              'In the BST 50 → 30 and 70, which direction should we move when searching for 60?',
+
+            answer: 'Right from 50, then left from 70',
+
+            explanation:
+              'Because 60 is greater than 50, we move right to 70. Because 60 is less than 70, we then move left.'
+          },
+
+          {
+            category: 'Complexity',
+
+            question:
+              'What is the search complexity of a balanced BST, and what can it become when the tree is extremely unbalanced?',
+
+            answer: 'O(log n) when balanced; O(n) when unbalanced',
+
+            explanation:
+              'A balanced tree eliminates a large portion of the remaining nodes after each comparison. A highly unbalanced tree may behave like a linked list.'
+          },
+
+          {
+            category: 'Heap Property',
+
+            question:
+              'Which value must appear at the root of a min-heap?',
+
+            answer: 'The smallest value',
+
+            explanation:
+              'Every parent in a min-heap must be less than or equal to its children. Therefore, the minimum value is stored at the root.'
+          },
+
+          {
+            category: 'Heap Array',
+
+            question:
+              'Using zero-based indexing, what are the left-child and right-child indexes of the node at index 2?',
+
+            code: [
+              'left_child = 2 * i + 1',
+              'right_child = 2 * i + 2'
+            ].join('\n'),
+
+            answer: 'Left child: 5; right child: 6',
+
+            explanation:
+              'Substituting i = 2 gives 2 × 2 + 1 = 5 and 2 × 2 + 2 = 6.'
+          },
+
+          {
+            category: 'Python heapq',
+
+            question:
+              'What value is removed by the first heappop() call?',
+
+            code: [
+              'import heapq',
+              '',
+              'values = [30, 10, 20]',
+              'heapq.heapify(values)',
+              '',
+              'print(heapq.heappop(values))'
+            ].join('\n'),
+
+            answer: '10',
+
+            explanation:
+              'Python heapq implements a min-heap, so heappop() removes the smallest value.'
+          },
+
+          {
+            category: 'Priority Queue',
+
+            question:
+              'Which task is removed first from this priority queue?',
+
+            code: [
+              'import heapq',
+              '',
+              'tasks = []',
+              'heapq.heappush(tasks, (3, "Study"))',
+              'heapq.heappush(tasks, (1, "Submit assignment"))',
+              'heapq.heappush(tasks, (2, "Review"))',
+              '',
+              'print(heapq.heappop(tasks))'
+            ].join('\n'),
+
+            answer: '(1, "Submit assignment")',
+
+            explanation:
+              'Tuples are compared beginning with their first value. Because 1 is the smallest priority number, that task is removed first.'
+          },
+
+          {
+            category: 'Heap Complexity',
+
+            question:
+              'What are the Big-O complexities of viewing the minimum and inserting into a min-heap?',
+
+            answer: 'View minimum: O(1); insert: O(log n)',
+
+            explanation:
+              'The minimum is already stored at index 0. An inserted value may need to move upward through the height of the heap.'
+          },
+
+          {
+            category: 'Structure Selection',
+
+            question:
+              'Which structure should you choose when you repeatedly need the smallest-priority item?',
+
+            answer: 'A min-heap priority queue',
+
+            explanation:
+              'A min-heap keeps the smallest-priority item at the root and supports efficient insertion and removal.'
+          },
+
+          {
+            category: 'AVL Trees',
+
+            question:
+              'Why does an AVL tree perform rotations?',
+
+            answer: 'To restore balance while preserving BST ordering',
+
+            explanation:
+              'Rotations change the shape of the tree without breaking the Binary Search Tree property. This keeps the height near O(log n).'
+          }
+        ]
+      },
       
 
   }
