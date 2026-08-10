@@ -118,6 +118,93 @@ function TopicPage() {
             ))}
           </div>
         </section>
+        {lesson.graphFundamentals && (
+          <section className="lesson-section graph-fundamentals-section">
+            <p className="section-label">Graph Fundamentals</p>
+            <h2>{lesson.graphFundamentals.title}</h2>
+
+            <p className="lesson-body">
+              {lesson.graphFundamentals.introduction}
+            </p>
+
+            <div className="graph-visual-card">
+              <svg
+                className="graph-svg"
+                viewBox="0 0 700 420"
+                role="img"
+                aria-label="Undirected graph containing five vertices"
+              >
+                <g className="graph-edges">
+                  {lesson.graphFundamentals.edges.map((edge) => {
+                    const start = lesson.graphFundamentals.vertices.find(
+                      (vertex) => vertex.id === edge.from
+                    )
+
+                    const end = lesson.graphFundamentals.vertices.find(
+                      (vertex) => vertex.id === edge.to
+                    )
+
+                    if (!start || !end) {
+                      return null
+                    }
+
+                    return (
+                      <line
+                        key={`${edge.from}-${edge.to}`}
+                        x1={start.x}
+                        y1={start.y}
+                        x2={end.x}
+                        y2={end.y}
+                      />
+                    )
+                  })}
+                </g>
+
+                <g className="graph-vertices">
+                  {lesson.graphFundamentals.vertices.map((vertex) => (
+                    <g key={vertex.id}>
+                      <circle
+                        cx={vertex.x}
+                        cy={vertex.y}
+                        r="42"
+                      />
+
+                      <text
+                        x={vertex.x}
+                        y={vertex.y}
+                        textAnchor="middle"
+                        dominantBaseline="middle"
+                      >
+                        {vertex.id}
+                      </text>
+                    </g>
+                  ))}
+                </g>
+              </svg>
+            </div>
+
+            <div className="graph-facts-grid">
+              {lesson.graphFundamentals.facts.map((fact) => (
+                <article
+                  className="graph-fact-card"
+                  key={fact.label}
+                >
+                  <div className="graph-fact-heading">
+                    <h3>{fact.label}</h3>
+                    <span>{fact.value}</span>
+                  </div>
+
+                  <p>{fact.explanation}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="key-idea">
+              <strong>Remember:</strong>
+              <p>{lesson.graphFundamentals.keyIdea}</p>
+            </div>
+          </section>
+        )}
 
         {lesson.treeAnatomy && (
   <section className="lesson-section tree-anatomy-section">

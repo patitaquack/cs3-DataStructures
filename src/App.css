@@ -3617,6 +3617,79 @@
   line-height: 1.7;
 }
 
+.graph-visual-card {
+  margin-top: 38px;
+  padding: 24px;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.5);
+}
+
+.graph-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.graph-edges line {
+  stroke: rgba(103, 232, 249, 0.55);
+  stroke-width: 4;
+}
+
+.graph-vertices circle {
+  fill: #0f172a;
+  stroke: #67e8f9;
+  stroke-width: 5;
+}
+
+.graph-vertices text {
+  fill: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.graph-facts-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.graph-fact-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.graph-fact-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.graph-fact-heading h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.08rem;
+}
+
+.graph-fact-heading span {
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: #67e8f9;
+  background: rgba(103, 232, 249, 0.1);
+  font-weight: 800;
+}
+
+.graph-fact-card p {
+  margin: 14px 0 0;
+  color: #9eabc0;
+  line-height: 1.7;
+}
+
 
 @media (max-width: 700px) {
   .lesson-page {
@@ -4120,5 +4193,22 @@
   .tree-scenario-card > h4 {
     min-height: 0;
   }
+    /* Graph fundamentals on mobile */
+
+    .graph-visual-card {
+      padding: 10px;
+    }
+  
+    .graph-facts-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .graph-fact-card {
+      padding: 20px;
+    }
+  
+    .graph-vertices text {
+      font-size: 34px;
+    }
 
 }

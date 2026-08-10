@@ -3,6 +3,7 @@ import { sortingLesson } from './sorting.js'
 import { linkedListsLesson } from './linkedLists.js'
 import { hashingLesson } from './hashing.js'
 import { treesLesson } from './trees.js'
+import { graphsLesson } from './graphs.js'
 
 export const lessonsById = {
   analysis: analysisLesson,
@@ -10,4 +11,5 @@ export const lessonsById = {
   linkedLists: linkedListsLesson,
   hashing: hashingLesson,
   trees: treesLesson,
+  graphs: graphsLesson,
 }
