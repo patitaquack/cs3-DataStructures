@@ -3689,6 +3689,1600 @@
   color: #9eabc0;
   line-height: 1.7;
 }
+.graph-type-grid {
+  margin-top: 38px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.graph-type-card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.graph-type-card.directed {
+  border-color: rgba(110, 231, 183, 0.32);
+}
+
+.graph-type-card h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.graph-type-card > p {
+  color: #9eabc0;
+  line-height: 1.7;
+}
+
+.graph-type-rule {
+  margin: 20px 0 14px;
+  padding: 14px 16px;
+  border-left: 3px solid #67e8f9;
+  background: rgba(103, 232, 249, 0.08);
+  color: #d8f6ff !important;
+  font-weight: 700;
+}
+
+.graph-type-card.directed .graph-type-rule {
+  border-left-color: #6ee7b7;
+  background: rgba(110, 231, 183, 0.08);
+}
+
+.graph-type-visual {
+  margin-top: 24px;
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 14px;
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.graph-type-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.graph-type-edges line {
+  stroke: rgba(103, 232, 249, 0.65);
+  stroke-width: 4;
+}
+
+.graph-type-edges.directed line {
+  stroke: #6ee7b7;
+}
+
+#graph-arrowhead path {
+  fill: #6ee7b7;
+}
+
+.graph-type-vertices circle {
+  fill: #0f172a;
+  stroke: #67e8f9;
+  stroke-width: 5;
+}
+
+.graph-type-vertices.directed circle {
+  stroke: #6ee7b7;
+}
+
+.graph-type-vertices text {
+  fill: #ffffff;
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.graph-type-card h4 {
+  margin: 26px 0 14px;
+  color: #ffffff;
+  font-size: 1rem;
+}
+
+.graph-type-examples {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+  list-style: none;
+}
+
+.graph-type-examples li {
+  padding: 12px 14px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 10px;
+  color: #aebbd0;
+  background: rgba(2, 6, 23, 0.35);
+}
+
+.graph-type-examples li::before {
+  content: "→";
+  margin-right: 10px;
+  color: #67e8f9;
+  font-weight: 900;
+}
+
+.graph-type-card.directed .graph-type-examples li::before {
+  color: #6ee7b7;
+}
+/* Weighted vs. Unweighted Graphs */
+
+.graph-weight-grid {
+  margin-top: 36px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.graph-weight-card {
+  min-width: 0;
+  padding: 30px;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.graph-weight-card.weighted {
+  border-color: rgba(129, 140, 248, 0.32);
+}
+
+.graph-weight-card h3,
+.path-cost-comparison h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+
+.graph-weight-card > p {
+  color: #aebbd0;
+  line-height: 1.75;
+}
+
+.graph-weight-rule {
+  padding: 14px 16px;
+  border-radius: 10px;
+  color: #67e8f9 !important;
+  background: rgba(103, 232, 249, 0.08);
+  font-weight: 700;
+}
+
+.graph-weight-card.weighted .graph-weight-rule {
+  color: #a5b4fc !important;
+  background: rgba(129, 140, 248, 0.1);
+}
+
+.graph-weight-visual {
+  margin-top: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(103, 232, 249, 0.18);
+  border-radius: 14px;
+  background: #050b16;
+}
+
+.graph-weight-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.graph-weight-edges line {
+  stroke: rgba(103, 232, 249, 0.62);
+  stroke-width: 4;
+}
+
+.graph-weight-edges.weighted line {
+  stroke: rgba(165, 180, 252, 0.72);
+}
+
+.graph-weight-vertices circle {
+  fill: #0f172a;
+  stroke: #67e8f9;
+  stroke-width: 4;
+}
+
+.graph-weight-vertices.weighted circle {
+  stroke: #a5b4fc;
+}
+
+.graph-weight-vertices text {
+  fill: #ffffff;
+  font-size: 28px;
+  font-weight: 800;
+}
+
+.graph-weight-label-background {
+  fill: #050b16;
+  stroke: #a5b4fc;
+  stroke-width: 3;
+}
+
+.graph-edge-weight {
+  fill: #a5b4fc;
+  font-size: 20px;
+  font-weight: 900;
+}
+
+.graph-weight-card h4 {
+  margin: 26px 0 14px;
+  color: #ffffff;
+}
+
+.graph-weight-examples {
+  margin: 0;
+  padding-left: 22px;
+  color: #aebbd0;
+  line-height: 1.8;
+}
+
+.graph-weight-examples li::marker {
+  color: #67e8f9;
+}
+
+.path-cost-comparison {
+  margin-top: 28px;
+  padding: 30px;
+  border: 1px solid rgba(129, 140, 248, 0.28);
+  border-radius: 16px;
+  background: rgba(79, 70, 229, 0.08);
+}
+
+.path-cost-grid {
+  margin-top: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.path-cost-card {
+  padding: 22px;
+  display: grid;
+  gap: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.48);
+}
+
+.path-cost-card strong {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+.path-cost-card code {
+  color: #67e8f9;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+.path-cost-card span {
+  color: #6ee7b7;
+  font-weight: 800;
+}
+
+.path-cost-comparison > p {
+  margin: 22px 0 0;
+  color: #aebbd0;
+  line-height: 1.75;
+}
+/* Graph representations */
+
+.graph-representation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.graph-representation-card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.graph-representation-card h3 {
+  margin: 0 0 16px;
+  font-size: 1.45rem;
+}
+
+.graph-representation-card h4 {
+  margin: 28px 0 14px;
+}
+
+.graph-representation-card > p {
+  color: #a8b3c7;
+  line-height: 1.7;
+}
+
+.adjacency-list-rows {
+  display: grid;
+  gap: 12px;
+}
+
+.adjacency-list-row {
+  display: grid;
+  grid-template-columns: 44px 24px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  background: rgba(2, 8, 23, 0.52);
+}
+
+.adjacency-vertex {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #67e8f9;
+  border-radius: 50%;
+  color: #f8fafc;
+  font-weight: 800;
+}
+
+.adjacency-arrow {
+  color: #67e8f9;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.adjacency-neighbors {
+  color: #8b9cff;
+  font-weight: 700;
+}
+
+.adjacency-matrix-wrapper,
+.representation-table-wrapper {
+  max-width: 100%;
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+}
+
+.adjacency-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.adjacency-matrix th,
+.adjacency-matrix td {
+  padding: 16px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  border-right: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.adjacency-matrix th {
+  color: #67e8f9;
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.adjacency-matrix td {
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.adjacency-matrix tr:last-child th,
+.adjacency-matrix tr:last-child td {
+  border-bottom: none;
+}
+
+.adjacency-matrix th:last-child,
+.adjacency-matrix td:last-child {
+  border-right: none;
+}
+
+.representation-summary {
+  display: grid;
+  gap: 18px;
+  margin-top: 28px;
+  padding: 20px;
+  border: 1px solid rgba(110, 231, 183, 0.24);
+  border-radius: 14px;
+  background: rgba(6, 78, 59, 0.12);
+}
+
+.representation-summary div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.representation-summary span {
+  color: #a8b3c7;
+  font-weight: 700;
+}
+
+.representation-summary strong {
+  color: #6ee7b7;
+}
+
+.representation-summary p {
+  margin: 0;
+  color: #a8b3c7;
+  line-height: 1.7;
+}
+
+.representation-comparison {
+  margin-top: 40px;
+}
+
+.representation-comparison h3 {
+  margin-bottom: 20px;
+}
+
+.representation-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.representation-table th,
+.representation-table td {
+  padding: 20px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+  text-align: left;
+}
+
+.representation-table thead th {
+  color: #67e8f9;
+  background: rgba(30, 41, 59, 0.92);
+}
+
+.representation-table tbody th {
+  color: #f8fafc;
+}
+
+.representation-table td {
+  color: #a8b3c7;
+}
+
+.representation-table tbody tr:last-child th,
+.representation-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.graph-notation {
+  display: grid;
+  gap: 12px;
+  margin: 32px 0;
+  padding: 24px;
+  border: 1px solid rgba(139, 156, 255, 0.28);
+  border-radius: 16px;
+  background: rgba(49, 46, 129, 0.14);
+}
+
+.graph-notation h3,
+.graph-notation p {
+  margin: 0;
+}
+
+.graph-notation p {
+  color: #a8b3c7;
+  line-height: 1.7;
+}
+/* Breadth-First Search */
+
+.bfs-code-section,
+.bfs-explanation-section,
+.bfs-trace-section {
+  margin-top: 48px;
+}
+
+.bfs-code-section h3,
+.bfs-explanation-section h3,
+.bfs-trace-section h3 {
+  margin-bottom: 22px;
+}
+
+.bfs-trace-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.bfs-trace-card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.bfs-trace-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.bfs-trace-card > p:last-child {
+  margin: 22px 0 0;
+  color: #a8b3c7;
+  line-height: 1.7;
+}
+
+.bfs-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(103, 232, 249, 0.24);
+  border-radius: 12px;
+  background: rgba(8, 47, 73, 0.4);
+}
+
+.bfs-current span,
+.bfs-trace-state span {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bfs-current strong {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 50%;
+  background: #67e8f9;
+  color: #06121f;
+  font-size: 1.15rem;
+}
+
+.bfs-trace-state {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.bfs-trace-state > div {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.48);
+}
+
+.bfs-trace-state p {
+  margin: 9px 0 0;
+  color: #d8e1ee;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.bfs-order {
+  margin-top: 48px;
+  padding: 30px;
+  border: 1px solid rgba(103, 232, 249, 0.24);
+  border-radius: 16px;
+  background: rgba(8, 47, 73, 0.28);
+}
+
+.bfs-order-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.bfs-order-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.bfs-order-vertex {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 2px solid #67e8f9;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #f8fafc;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.bfs-order-arrow {
+  color: #67e8f9;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.bfs-complexity {
+  margin-top: 48px;
+  padding: 30px;
+  border: 1px solid rgba(129, 140, 248, 0.32);
+  border-radius: 16px;
+  background: rgba(30, 41, 89, 0.42);
+}
+
+.bfs-complexity h3 {
+  margin-top: 0;
+}
+
+.bfs-complexity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.bfs-complexity-grid article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid rgba(110, 231, 183, 0.28);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.62);
+}
+
+.bfs-complexity-grid span {
+  color: #a8b3c7;
+  font-weight: 700;
+}
+
+.bfs-complexity-grid strong {
+  color: #6ee7b7;
+  font-size: 1.45rem;
+}
+
+.bfs-complexity > p {
+  margin: 0;
+  color: #a8b3c7;
+  line-height: 1.75;
+}
+/* Depth-First Search */
+
+.dfs-code-section,
+.dfs-explanation-section,
+.dfs-trace-section {
+  margin-top: 48px;
+}
+
+.dfs-code-section h3,
+.dfs-explanation-section h3,
+.dfs-trace-section h3 {
+  margin-bottom: 22px;
+}
+
+.dfs-trace-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.dfs-trace-card {
+  min-width: 0;
+  padding: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.dfs-trace-card:last-child {
+  grid-column: 1 / -1;
+}
+
+.dfs-trace-card > p:last-child {
+  margin: 22px 0 0;
+  color: #a8b3c7;
+  line-height: 1.7;
+}
+
+.dfs-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  margin: 18px 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 12px;
+  background: rgba(49, 46, 129, 0.3);
+}
+
+.dfs-current span,
+.dfs-trace-state span {
+  color: #94a3b8;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dfs-current strong {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 50%;
+  background: #a78bfa;
+  color: #0b1020;
+  font-size: 1.15rem;
+}
+
+.dfs-trace-state {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.dfs-trace-state > div {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.48);
+}
+
+.dfs-trace-state p {
+  margin: 9px 0 0;
+  color: #d8e1ee;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    monospace;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.dfs-order {
+  margin-top: 48px;
+  padding: 30px;
+  border: 1px solid rgba(167, 139, 250, 0.3);
+  border-radius: 16px;
+  background: rgba(49, 46, 129, 0.24);
+}
+
+.dfs-order-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 25px;
+}
+
+.dfs-order-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dfs-order-vertex {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  border: 2px solid #a78bfa;
+  border-radius: 50%;
+  background: #0f172a;
+  color: #f8fafc;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.dfs-order-arrow {
+  color: #a78bfa;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.dfs-complexity {
+  margin-top: 48px;
+  padding: 30px;
+  border: 1px solid rgba(129, 140, 248, 0.32);
+  border-radius: 16px;
+  background: rgba(30, 41, 89, 0.42);
+}
+
+.dfs-complexity h3 {
+  margin-top: 0;
+}
+
+.dfs-complexity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 24px 0;
+}
+
+.dfs-complexity-grid article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 22px;
+  border: 1px solid rgba(110, 231, 183, 0.28);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.62);
+}
+
+.dfs-complexity-grid span {
+  color: #a8b3c7;
+  font-weight: 700;
+}
+
+.dfs-complexity-grid strong {
+  color: #6ee7b7;
+  font-size: 1.45rem;
+}
+
+.dfs-complexity > p {
+  margin: 0;
+  color: #a8b3c7;
+  line-height: 1.75;
+}
+/* Topological Sort */
+
+.topological-dependencies,
+.topological-code-section,
+.topological-explanation-section,
+.topological-indegree-section,
+.topological-trace-section,
+.topological-order,
+.topological-complexity {
+  margin-top: 36px;
+}
+
+.topological-edge-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.topological-edge-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(103, 232, 249, 0.24);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.topological-vertex {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  border: 2px solid #67e8f9;
+  border-radius: 50%;
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.topological-arrow {
+  color: #67e8f9;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.topological-indegree-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.topological-indegree-card {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid rgba(103, 232, 249, 0.2);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.72);
+  text-align: center;
+}
+
+.topological-indegree-card span {
+  display: block;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.topological-indegree-card strong {
+  display: block;
+  margin: 10px 0;
+  color: #67e8f9;
+  font-size: 1.6rem;
+}
+
+.topological-indegree-card p {
+  margin: 0;
+  color: #cbd5e1;
+}
+
+.topological-trace-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 20px;
+}
+
+.topological-trace-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.topological-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 18px 0;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(103, 232, 249, 0.08);
+}
+
+.topological-current span {
+  color: #94a3b8;
+}
+
+.topological-current strong {
+  color: #67e8f9;
+  font-size: 1.5rem;
+}
+
+.topological-trace-state {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.topological-trace-state > div {
+  min-width: 0;
+  padding: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.5);
+}
+
+.topological-trace-state span {
+  color: #94a3b8;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.topological-trace-state p {
+  margin: 8px 0 0;
+  overflow-wrap: anywhere;
+  color: #f8fafc;
+}
+
+.topological-order {
+  padding: 24px;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.topological-order-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.topological-order-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topological-order-vertex {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  border: 2px solid #67e8f9;
+  border-radius: 50%;
+  color: #f8fafc;
+  font-weight: 700;
+}
+
+.topological-order-arrow {
+  color: #67e8f9;
+  font-size: 1.4rem;
+}
+
+.topological-complexity {
+  padding: 28px;
+  border: 1px solid rgba(129, 140, 248, 0.35);
+  border-radius: 16px;
+  background: rgba(30, 41, 89, 0.48);
+}
+
+.topological-complexity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.topological-complexity-grid article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.72);
+}
+
+.topological-complexity-grid span {
+  color: #94a3b8;
+}
+
+.topological-complexity-grid strong {
+  color: #6ee7b7;
+  font-size: 1.35rem;
+}
+
+/* Dijkstra's Algorithm */
+
+.dijkstra-warning {
+  margin-top: 24px;
+  padding: 22px 24px;
+  border-left: 4px solid #fb7185;
+  border-radius: 0 12px 12px 0;
+  background: rgba(251, 113, 133, 0.1);
+}
+
+.dijkstra-warning strong {
+  color: #fb7185;
+}
+
+.dijkstra-warning p {
+  margin: 8px 0 0;
+}
+
+.dijkstra-graph-wrapper {
+  margin-top: 32px;
+  padding: 24px;
+  overflow-x: auto;
+  border: 1px solid rgba(103, 232, 249, 0.22);
+  border-radius: 16px;
+  background: rgba(5, 11, 22, 0.82);
+}
+
+.dijkstra-graph {
+  display: block;
+  width: 100%;
+  min-width: 680px;
+  height: auto;
+}
+
+.dijkstra-edge {
+  stroke: rgba(103, 232, 249, 0.55);
+  stroke-width: 3;
+}
+
+.dijkstra-weight-background {
+  fill: #0f172a;
+  stroke: rgba(103, 232, 249, 0.55);
+  stroke-width: 2;
+}
+
+.dijkstra-weight {
+  fill: #67e8f9;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.dijkstra-vertex {
+  fill: #101a2f;
+  stroke: #67e8f9;
+  stroke-width: 3;
+}
+
+.dijkstra-start-vertex {
+  fill: #67e8f9;
+}
+
+.dijkstra-vertex-label {
+  fill: #f8fafc;
+  font-size: 22px;
+  font-weight: 800;
+}
+
+.dijkstra-start-vertex + .dijkstra-vertex-label {
+  fill: #07111f;
+}
+
+.dijkstra-code-section,
+.dijkstra-explanation-section,
+.dijkstra-trace-section,
+.dijkstra-results,
+.dijkstra-complexity {
+  margin-top: 36px;
+}
+
+.dijkstra-trace-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.dijkstra-trace-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.dijkstra-current {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 16px 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: rgba(103, 232, 249, 0.08);
+}
+
+.dijkstra-current span,
+.dijkstra-distance span {
+  color: #94a3b8;
+}
+
+.dijkstra-current strong {
+  color: #67e8f9;
+  font-size: 1.5rem;
+}
+
+.dijkstra-distance-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  margin: 18px 0;
+}
+
+.dijkstra-distance {
+  display: grid;
+  place-items: center;
+  gap: 6px;
+  padding: 12px 8px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 10px;
+  background: rgba(5, 11, 22, 0.65);
+}
+
+.dijkstra-distance strong {
+  color: #f8fafc;
+}
+
+.dijkstra-distance.active {
+  border-color: rgba(110, 231, 183, 0.65);
+  background: rgba(16, 185, 129, 0.12);
+}
+
+.dijkstra-distance.active strong {
+  color: #6ee7b7;
+}
+
+.dijkstra-visited {
+  color: #cbd5e1;
+}
+
+.dijkstra-results-wrapper {
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 16px;
+}
+
+.dijkstra-results-table {
+  width: 100%;
+  min-width: 620px;
+  border-collapse: collapse;
+  background: rgba(15, 23, 42, 0.68);
+}
+
+.dijkstra-results-table th,
+.dijkstra-results-table td {
+  padding: 18px 20px;
+  text-align: left;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.dijkstra-results-table th {
+  background: rgba(30, 41, 59, 0.94);
+  color: #f8fafc;
+}
+
+.dijkstra-results-table td:nth-child(2) {
+  color: #6ee7b7;
+  font-weight: 800;
+}
+
+.dijkstra-results-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.dijkstra-complexity {
+  padding: 28px;
+  border: 1px solid rgba(129, 140, 248, 0.38);
+  border-radius: 16px;
+  background: rgba(49, 46, 129, 0.18);
+}
+
+.dijkstra-complexity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.dijkstra-complexity-grid article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid rgba(110, 231, 183, 0.35);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.76);
+}
+
+.dijkstra-complexity-grid span {
+  color: #a8b3c7;
+}
+
+.dijkstra-complexity-grid strong {
+  color: #6ee7b7;
+  font-size: 1.4rem;
+}
+/* Minimum Spanning Trees */
+
+.mst-requirements {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 32px 0;
+}
+
+.mst-requirement,
+.mst-algorithm-card,
+.mst-step,
+.mst-result,
+.mst-complexity {
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.65);
+}
+
+.mst-requirement {
+  padding: 22px;
+}
+
+.mst-requirement strong {
+  display: block;
+  margin-bottom: 10px;
+  color: #67e8f9;
+}
+
+.mst-requirement p {
+  margin: 0;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+
+.mst-edge-table-wrapper,
+.mst-comparison-wrapper {
+  margin: 28px 0;
+  overflow-x: auto;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+}
+
+.mst-edge-table,
+.mst-comparison-table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.mst-edge-table th,
+.mst-edge-table td,
+.mst-comparison-table th,
+.mst-comparison-table td {
+  padding: 18px 22px;
+  text-align: left;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+}
+
+.mst-edge-table th,
+.mst-comparison-table th {
+  color: #f8fafc;
+  background: rgba(30, 41, 59, 0.9);
+}
+
+.mst-edge-table td,
+.mst-comparison-table td {
+  color: #a8b3c7;
+}
+
+.mst-edge-table tbody tr:last-child td,
+.mst-comparison-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.mst-algorithm-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.mst-algorithm-card {
+  min-width: 0;
+  padding: 28px;
+}
+
+.mst-algorithm-card h3 {
+  margin: 0 0 12px;
+  color: #f8fafc;
+}
+
+.prim-card {
+  border-color: rgba(103, 232, 249, 0.28);
+}
+
+.kruskal-card {
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+.mst-start {
+  display: inline-block;
+  margin: 16px 0;
+  padding: 8px 12px;
+  border-radius: 9px;
+  color: #67e8f9;
+  background: rgba(103, 232, 249, 0.1);
+  font-weight: 700;
+}
+
+.mst-steps {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.mst-step {
+  padding: 20px;
+}
+
+.mst-step-rejected {
+  border-color: rgba(251, 113, 133, 0.32);
+  background: rgba(251, 113, 133, 0.06);
+}
+
+.mst-step-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.mst-step-heading strong {
+  color: #f8fafc;
+}
+
+.mst-step-heading span {
+  color: #67e8f9;
+  font-weight: 700;
+}
+
+.mst-step p {
+  margin: 8px 0 0;
+  color: #94a3b8;
+  line-height: 1.65;
+}
+
+.mst-decision {
+  display: inline-block;
+  margin-top: 12px;
+  font-weight: 800;
+}
+
+.mst-decision.accepted {
+  color: #6ee7b7;
+}
+
+.mst-decision.rejected {
+  color: #fb7185;
+}
+
+.mst-result {
+  margin-top: 24px;
+  padding: 24px;
+  border-color: rgba(110, 231, 183, 0.3);
+}
+
+.mst-result h4 {
+  margin: 0 0 18px;
+  color: #f8fafc;
+}
+
+.mst-result-edges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mst-result-edge {
+  padding: 9px 13px;
+  border: 1px solid rgba(110, 231, 183, 0.3);
+  border-radius: 9px;
+  color: #6ee7b7;
+  background: rgba(110, 231, 183, 0.08);
+  font-weight: 700;
+}
+
+.mst-result-plus {
+  color: #64748b;
+  font-weight: 800;
+}
+
+.mst-total {
+  margin-top: 18px;
+  color: #f8fafc;
+  font-size: 1.05rem;
+}
+
+.mst-total strong {
+  color: #6ee7b7;
+}
+
+.mst-complexity {
+  margin-top: 32px;
+  padding: 28px;
+  border-color: rgba(129, 140, 248, 0.3);
+  background: rgba(49, 46, 129, 0.16);
+}
+
+.mst-complexity h3 {
+  margin-top: 0;
+}
+
+.mst-complexity-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 20px 0;
+}
+
+.mst-complexity-grid article {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px;
+  border: 1px solid rgba(110, 231, 183, 0.25);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.65);
+}
+
+.mst-complexity-grid span {
+  color: #a8b3c7;
+}
+
+.mst-complexity-grid strong {
+  color: #6ee7b7;
+  font-size: 1.25rem;
+}
+.graph-mistakes-grid {
+  display: grid;
+  gap: 24px;
+  margin-top: 32px;
+}
+
+.graph-mistake-card {
+  padding: 28px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  background: rgba(15, 23, 42, 0.65);
+}
+
+.graph-mistake-card h3 {
+  margin: 0 0 12px;
+}
+
+.graph-mistake-card > p {
+  margin: 0 0 24px;
+  color: #aab4c8;
+  line-height: 1.7;
+}
+
+.mistake-code-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.mistake-code-grid > div {
+  min-width: 0;
+}
+
+.mistake-label {
+  margin: 0 0 10px;
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mistake-label.incorrect {
+  color: #fb7185;
+}
+
+.mistake-label.correct {
+  color: #6ee7b7;
+}
+
+.mistake-code-grid .python-code {
+  height: 100%;
+  min-height: 180px;
+}
+
+.mistake-code-grid > div:first-child .python-code {
+  border-color: rgba(251, 113, 133, 0.42);
+  background: rgba(76, 29, 50, 0.22);
+}
+
+.mistake-code-grid > div:last-child .python-code {
+  border-color: rgba(52, 211, 153, 0.42);
+  background: rgba(6, 78, 59, 0.18);
+}
+
+.mistake-reminder {
+  margin-top: 20px;
+  padding: 18px 20px;
+  border-left: 4px solid #67e8f9;
+  border-radius: 0 12px 12px 0;
+  background: rgba(22, 78, 99, 0.3);
+}
+
+.mistake-reminder strong {
+  color: #67e8f9;
+}
+
+.mistake-reminder p {
+  margin: 8px 0 0;
+  color: #c7d2e3;
+  line-height: 1.65;
+}
 
 
 @media (max-width: 700px) {
@@ -4209,6 +5803,320 @@
   
     .graph-vertices text {
       font-size: 34px;
+    }
+    .graph-type-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .graph-type-card {
+      padding: 20px;
+    }
+  
+    .graph-type-visual {
+      padding: 6px;
+    }
+  
+    .graph-type-vertices text {
+      font-size: 34px;
+    }
+    .graph-weight-grid,
+    .path-cost-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .graph-weight-card,
+    .path-cost-comparison {
+      padding: 20px;
+    }
+  
+    .graph-weight-vertices text {
+      font-size: 24px;
+    }
+      /* Graph representations on mobile */
+
+  .graph-representation-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .graph-representation-card {
+    padding: 20px;
+  }
+
+  .adjacency-list-row {
+    grid-template-columns: 40px 20px minmax(0, 1fr);
+    padding: 12px;
+  }
+
+  .representation-summary div {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .adjacency-matrix {
+    min-width: 420px;
+  }
+
+  .representation-table {
+    min-width: 620px;
+  }
+
+  .representation-table th,
+  .representation-table td {
+    padding: 16px;
+  }
+
+  .graph-notation {
+    padding: 20px;
+  }
+    /* Breadth-First Search on mobile */
+
+    .bfs-code-section,
+    .bfs-explanation-section,
+    .bfs-trace-section {
+      margin-top: 36px;
+    }
+  
+    .bfs-trace-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .bfs-trace-card,
+    .bfs-trace-card:last-child {
+      grid-column: auto;
+      padding: 20px;
+    }
+  
+    .bfs-trace-state {
+      grid-template-columns: 1fr;
+    }
+  
+    .bfs-current {
+      padding: 14px;
+    }
+  
+    .bfs-order {
+      padding: 22px 18px;
+    }
+  
+    .bfs-order-row {
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      padding-bottom: 8px;
+    }
+  
+    .bfs-order-item {
+      flex: 0 0 auto;
+      gap: 10px;
+    }
+  
+    .bfs-order-vertex {
+      width: 46px;
+      height: 46px;
+      font-size: 1rem;
+    }
+  
+    .bfs-order-arrow {
+      font-size: 1.25rem;
+    }
+  
+    .bfs-complexity {
+      padding: 22px 18px;
+    }
+  
+    .bfs-complexity-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .bfs-complexity-grid article {
+      padding: 18px;
+    }
+      /* Depth-First Search on mobile */
+
+  .dfs-code-section,
+  .dfs-explanation-section,
+  .dfs-trace-section {
+    margin-top: 36px;
+  }
+
+  .dfs-trace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dfs-trace-card,
+  .dfs-trace-card:last-child {
+    grid-column: auto;
+    padding: 20px;
+  }
+
+  .dfs-trace-state {
+    grid-template-columns: 1fr;
+  }
+
+  .dfs-current {
+    padding: 14px;
+  }
+
+  .dfs-order {
+    padding: 22px 18px;
+  }
+
+  .dfs-order-row {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 8px;
+  }
+
+  .dfs-order-item {
+    flex: 0 0 auto;
+    gap: 10px;
+  }
+
+  .dfs-order-vertex {
+    width: 46px;
+    height: 46px;
+    font-size: 1rem;
+  }
+
+  .dfs-order-arrow {
+    font-size: 1.25rem;
+  }
+
+  .dfs-complexity {
+    padding: 22px 18px;
+  }
+
+  .dfs-complexity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dfs-complexity-grid article {
+    padding: 18px;
+  }
+    /* Topological Sort on mobile */
+
+    .topological-edge-grid,
+    .topological-indegree-grid,
+    .topological-trace-grid,
+    .topological-complexity-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .topological-trace-card,
+    .topological-order,
+    .topological-complexity {
+      padding: 20px;
+    }
+  
+    .topological-trace-state {
+      grid-template-columns: 1fr;
+    }
+  
+    .topological-current,
+    .topological-complexity-grid article {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .topological-order {
+      overflow-x: auto;
+    }
+  
+    .topological-order-row {
+      width: max-content;
+      min-width: 100%;
+      flex-wrap: nowrap;
+    }
+  
+    .topological-order-vertex {
+      width: 46px;
+      height: 46px;
+    }
+  
+    .topological-code-section .python-code {
+      max-width: 100%;
+      overflow-x: auto;
+    }
+      /* Dijkstra on mobile */
+
+  .dijkstra-warning,
+  .dijkstra-trace-card,
+  .dijkstra-complexity {
+    padding: 20px;
+  }
+
+  .dijkstra-graph-wrapper {
+    padding: 14px;
+  }
+
+  .dijkstra-graph {
+    min-width: 620px;
+  }
+
+  .dijkstra-trace-grid,
+  .dijkstra-complexity-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dijkstra-distance-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .dijkstra-current,
+  .dijkstra-complexity-grid article {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .dijkstra-results-table {
+    min-width: 560px;
+  }
+    /* Minimum Spanning Trees on mobile */
+
+    .mst-requirements,
+    .mst-algorithm-grid,
+    .mst-complexity-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .mst-requirement,
+    .mst-algorithm-card,
+    .mst-step,
+    .mst-result,
+    .mst-complexity {
+      padding: 20px;
+    }
+  
+    .mst-edge-table,
+    .mst-comparison-table {
+      min-width: 620px;
+    }
+  
+    .mst-step-heading {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .mst-complexity-grid article {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+  
+    .mst-result-edges {
+      align-items: flex-start;
+    }
+    .graph-mistake-card {
+      padding: 20px;
+    }
+    
+    .mistake-code-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .mistake-code-grid .python-code {
+      min-height: 0;
     }
 
 }

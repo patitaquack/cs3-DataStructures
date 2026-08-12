@@ -205,6 +205,1323 @@ function TopicPage() {
             </div>
           </section>
         )}
+        {lesson.graphTypes && (
+  <section className="lesson-section">
+    <p className="section-label">Graph Types</p>
+    <h2>{lesson.graphTypes.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.graphTypes.introduction}
+    </p>
+
+    <div className="graph-type-grid">
+      <article className="graph-type-card">
+        <h3>{lesson.graphTypes.undirected.title}</h3>
+
+        <p className="graph-type-rule">
+          {lesson.graphTypes.undirected.rule}
+        </p>
+
+        <p>{lesson.graphTypes.undirected.explanation}</p>
+
+        <div className="graph-type-visual">
+          <svg
+            className="graph-type-svg"
+            viewBox="0 0 500 380"
+            role="img"
+            aria-label="Example of an undirected graph"
+          >
+            <g className="graph-type-edges">
+              {lesson.graphTypes.undirected.edges.map((edge) => {
+                const start =
+                  lesson.graphTypes.undirected.vertices.find(
+                    (vertex) => vertex.id === edge.from
+                  )
+
+                const end =
+                  lesson.graphTypes.undirected.vertices.find(
+                    (vertex) => vertex.id === edge.to
+                  )
+
+                if (!start || !end) {
+                  return null
+                }
+
+                return (
+                  <line
+                    key={`${edge.from}-${edge.to}`}
+                    x1={start.x}
+                    y1={start.y}
+                    x2={end.x}
+                    y2={end.y}
+                  />
+                )
+              })}
+            </g>
+
+            <g className="graph-type-vertices">
+              {lesson.graphTypes.undirected.vertices.map((vertex) => (
+                <g key={vertex.id}>
+                  <circle
+                    cx={vertex.x}
+                    cy={vertex.y}
+                    r="46"
+                  />
+
+                  <text
+                    x={vertex.x}
+                    y={vertex.y}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    {vertex.id}
+                  </text>
+                </g>
+              ))}
+            </g>
+          </svg>
+        </div>
+
+        <h4>Examples</h4>
+
+        <ul className="graph-type-examples">
+          {lesson.graphTypes.undirected.examples.map((example) => (
+            <li key={example}>{example}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article className="graph-type-card directed">
+        <h3>{lesson.graphTypes.directed.title}</h3>
+
+        <p className="graph-type-rule">
+          {lesson.graphTypes.directed.rule}
+        </p>
+
+        <p>{lesson.graphTypes.directed.explanation}</p>
+
+        <div className="graph-type-visual">
+          <svg
+            className="graph-type-svg"
+            viewBox="0 0 500 380"
+            role="img"
+            aria-label="Example of a directed graph"
+          >
+            <defs>
+              <marker
+                id="graph-arrowhead"
+                markerWidth="12"
+                markerHeight="12"
+                refX="10"
+                refY="6"
+                orient="auto"
+                markerUnits="userSpaceOnUse"
+              >
+                <path d="M 0 0 L 12 6 L 0 12 z" />
+              </marker>
+            </defs>
+
+            <g className="graph-type-edges directed">
+              {lesson.graphTypes.directed.edges.map((edge) => {
+                const start =
+                  lesson.graphTypes.directed.vertices.find(
+                    (vertex) => vertex.id === edge.from
+                  )
+
+                const end =
+                  lesson.graphTypes.directed.vertices.find(
+                    (vertex) => vertex.id === edge.to
+                  )
+
+                if (!start || !end) {
+                  return null
+                }
+
+                const dx = end.x - start.x
+                const dy = end.y - start.y
+                const length = Math.hypot(dx, dy)
+                const nodeRadius = 52
+
+                const shortenedEndX =
+                  end.x - (dx / length) * nodeRadius
+
+                const shortenedEndY =
+                  end.y - (dy / length) * nodeRadius
+
+                return (
+                  <line
+                    key={`${edge.from}-${edge.to}`}
+                    x1={start.x}
+                    y1={start.y}
+                    x2={shortenedEndX}
+                    y2={shortenedEndY}
+                    markerEnd="url(#graph-arrowhead)"
+                  />
+                )
+              })}
+            </g>
+
+            <g className="graph-type-vertices directed">
+              {lesson.graphTypes.directed.vertices.map((vertex) => (
+                <g key={vertex.id}>
+                  <circle
+                    cx={vertex.x}
+                    cy={vertex.y}
+                    r="46"
+                  />
+
+                  <text
+                    x={vertex.x}
+                    y={vertex.y}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    {vertex.id}
+                  </text>
+                </g>
+              ))}
+            </g>
+          </svg>
+        </div>
+
+        <h4>Examples</h4>
+
+        <ul className="graph-type-examples">
+          {lesson.graphTypes.directed.examples.map((example) => (
+            <li key={example}>{example}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.graphTypes.keyIdea}</p>
+    </div>
+  </section>
+)}
+{lesson.graphWeights && (
+  <section className="lesson-section">
+    <p className="section-label">Graph Weights</p>
+    <h2>{lesson.graphWeights.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.graphWeights.introduction}
+    </p>
+
+    <div className="graph-weight-grid">
+      <article className="graph-weight-card">
+        <h3>{lesson.graphWeights.unweighted.title}</h3>
+
+        <p className="graph-weight-rule">
+          {lesson.graphWeights.unweighted.rule}
+        </p>
+
+        <p>{lesson.graphWeights.unweighted.explanation}</p>
+
+        <div className="graph-weight-visual">
+          <svg
+            className="graph-weight-svg"
+            viewBox="0 0 500 380"
+            role="img"
+            aria-label="Example of an unweighted graph"
+          >
+            <g className="graph-weight-edges">
+              {lesson.graphWeights.unweighted.edges.map((edge) => {
+                const start =
+                  lesson.graphWeights.unweighted.vertices.find(
+                    (vertex) => vertex.id === edge.from
+                  )
+
+                const end =
+                  lesson.graphWeights.unweighted.vertices.find(
+                    (vertex) => vertex.id === edge.to
+                  )
+
+                if (!start || !end) {
+                  return null
+                }
+
+                return (
+                  <line
+                    key={`${edge.from}-${edge.to}`}
+                    x1={start.x}
+                    y1={start.y}
+                    x2={end.x}
+                    y2={end.y}
+                  />
+                )
+              })}
+            </g>
+
+            <g className="graph-weight-vertices">
+              {lesson.graphWeights.unweighted.vertices.map((vertex) => (
+                <g key={vertex.id}>
+                  <circle
+                    cx={vertex.x}
+                    cy={vertex.y}
+                    r="46"
+                  />
+
+                  <text
+                    x={vertex.x}
+                    y={vertex.y}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    {vertex.id}
+                  </text>
+                </g>
+              ))}
+            </g>
+          </svg>
+        </div>
+
+        <h4>Examples</h4>
+
+        <ul className="graph-weight-examples">
+          {lesson.graphWeights.unweighted.examples.map((example) => (
+            <li key={example}>{example}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article className="graph-weight-card weighted">
+        <h3>{lesson.graphWeights.weighted.title}</h3>
+
+        <p className="graph-weight-rule">
+          {lesson.graphWeights.weighted.rule}
+        </p>
+
+        <p>{lesson.graphWeights.weighted.explanation}</p>
+
+        <div className="graph-weight-visual">
+          <svg
+            className="graph-weight-svg"
+            viewBox="0 0 500 380"
+            role="img"
+            aria-label="Example of a weighted graph"
+          >
+            <g className="graph-weight-edges weighted">
+              {lesson.graphWeights.weighted.edges.map((edge) => {
+                const start =
+                  lesson.graphWeights.weighted.vertices.find(
+                    (vertex) => vertex.id === edge.from
+                  )
+
+                const end =
+                  lesson.graphWeights.weighted.vertices.find(
+                    (vertex) => vertex.id === edge.to
+                  )
+
+                if (!start || !end) {
+                  return null
+                }
+
+                const middleX = (start.x + end.x) / 2
+                const middleY = (start.y + end.y) / 2
+
+                return (
+                  <g key={`${edge.from}-${edge.to}`}>
+                    <line
+                      x1={start.x}
+                      y1={start.y}
+                      x2={end.x}
+                      y2={end.y}
+                    />
+
+                    <circle
+                      className="graph-weight-label-background"
+                      cx={middleX}
+                      cy={middleY}
+                      r="25"
+                    />
+
+                    <text
+                      className="graph-edge-weight"
+                      x={middleX}
+                      y={middleY}
+                      textAnchor="middle"
+                      dominantBaseline="middle"
+                    >
+                      {edge.weight}
+                    </text>
+                  </g>
+                )
+              })}
+            </g>
+
+            <g className="graph-weight-vertices weighted">
+              {lesson.graphWeights.weighted.vertices.map((vertex) => (
+                <g key={vertex.id}>
+                  <circle
+                    cx={vertex.x}
+                    cy={vertex.y}
+                    r="46"
+                  />
+
+                  <text
+                    x={vertex.x}
+                    y={vertex.y}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                  >
+                    {vertex.id}
+                  </text>
+                </g>
+              ))}
+            </g>
+          </svg>
+        </div>
+
+        <h4>Examples</h4>
+
+        <ul className="graph-weight-examples">
+          {lesson.graphWeights.weighted.examples.map((example) => (
+            <li key={example}>{example}</li>
+          ))}
+        </ul>
+      </article>
+    </div>
+
+    <div className="path-cost-comparison">
+      <h3>{lesson.graphWeights.pathComparison.title}</h3>
+
+      <div className="path-cost-grid">
+        {lesson.graphWeights.pathComparison.paths.map((path) => (
+          <article className="path-cost-card" key={path.path}>
+            <strong>{path.path}</strong>
+            <code>{path.calculation}</code>
+            <span>Total weight: {path.total}</span>
+          </article>
+        ))}
+      </div>
+
+      <p>{lesson.graphWeights.pathComparison.explanation}</p>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.graphWeights.keyIdea}</p>
+    </div>
+  </section>
+)}
+{lesson.graphRepresentations && (
+  <section className="lesson-section graph-representations-section">
+    <p className="section-label">Graph Representation</p>
+    <h2>{lesson.graphRepresentations.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.graphRepresentations.introduction}
+    </p>
+
+    <div className="graph-representation-grid">
+      <article className="graph-representation-card">
+        <h3>{lesson.graphRepresentations.adjacencyList.title}</h3>
+
+        <p>
+          {lesson.graphRepresentations.adjacencyList.explanation}
+        </p>
+
+        <h4>Python Example</h4>
+
+        <pre className="python-code">
+          <code>
+            {lesson.graphRepresentations.adjacencyList.code}
+          </code>
+        </pre>
+
+        <h4>Neighbor Lists</h4>
+
+        <div className="adjacency-list-rows">
+          {lesson.graphRepresentations.adjacencyList.rows.map((row) => (
+            <div className="adjacency-list-row" key={row.vertex}>
+              <span className="adjacency-vertex">{row.vertex}</span>
+              <span className="adjacency-arrow">→</span>
+              <span className="adjacency-neighbors">
+                {row.neighbors.join(', ')}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <div className="representation-summary">
+          <div>
+            <span>Space Complexity</span>
+            <strong>
+              {lesson.graphRepresentations.adjacencyList.spaceComplexity}
+            </strong>
+          </div>
+
+          <p>
+            <strong>Best for:</strong>{' '}
+            {lesson.graphRepresentations.adjacencyList.bestFor}
+          </p>
+        </div>
+      </article>
+
+      <article className="graph-representation-card">
+        <h3>{lesson.graphRepresentations.adjacencyMatrix.title}</h3>
+
+        <p>
+          {lesson.graphRepresentations.adjacencyMatrix.explanation}
+        </p>
+
+        <h4>Adjacency Matrix</h4>
+
+        <div className="adjacency-matrix-wrapper">
+          <table className="adjacency-matrix">
+            <thead>
+              <tr>
+                <th></th>
+
+                {lesson.graphRepresentations.adjacencyMatrix.headers.map(
+                  (header) => (
+                    <th key={header}>{header}</th>
+                  ),
+                )}
+              </tr>
+            </thead>
+
+            <tbody>
+              {lesson.graphRepresentations.adjacencyMatrix.rows.map((row) => (
+                <tr key={row.vertex}>
+                  <th>{row.vertex}</th>
+
+                  {row.values.map((value, index) => (
+                    <td key={`${row.vertex}-${index}`}>{value}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <div className="representation-summary">
+          <div>
+            <span>Space Complexity</span>
+            <strong>
+              {lesson.graphRepresentations.adjacencyMatrix.spaceComplexity}
+            </strong>
+          </div>
+
+          <p>
+            <strong>Best for:</strong>{' '}
+            {lesson.graphRepresentations.adjacencyMatrix.bestFor}
+          </p>
+        </div>
+      </article>
+    </div>
+
+    <div className="representation-comparison">
+      <h3>Adjacency List vs. Adjacency Matrix</h3>
+
+      <div className="representation-table-wrapper">
+        <table className="representation-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Adjacency List</th>
+              <th>Adjacency Matrix</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {lesson.graphRepresentations.comparison.map((row) => (
+              <tr key={row.feature}>
+                <th>{row.feature}</th>
+                <td>{row.adjacencyList}</td>
+                <td>{row.adjacencyMatrix}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="graph-notation">
+      <h3>Understanding V and E</h3>
+      <p>{lesson.graphRepresentations.notation.vertices}</p>
+      <p>{lesson.graphRepresentations.notation.edges}</p>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.graphRepresentations.keyIdea}</p>
+    </div>
+  </section>
+)}
+{lesson.breadthFirstSearch && (
+  <section className="lesson-section bfs-section">
+    <p className="section-label">Graph Traversal</p>
+    <h2>{lesson.breadthFirstSearch.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.breadthFirstSearch.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.breadthFirstSearch.keyIdea}</p>
+    </div>
+
+    <div className="bfs-code-section">
+      <h3>Python Example</h3>
+
+      <pre className="python-code">
+        <code>{lesson.breadthFirstSearch.code}</code>
+      </pre>
+    </div>
+
+    <div className="bfs-explanation-section">
+      <h3>Line-by-Line Explanation</h3>
+
+      <div className="code-explanations">
+        {lesson.breadthFirstSearch.lineByLine.map((item) => (
+          <div className="code-explanation" key={item.line}>
+            <code>{item.line}</code>
+            <p>{item.explanation}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="bfs-trace-section">
+      <h3>
+        BFS Trace: Start at {lesson.breadthFirstSearch.start}
+      </h3>
+
+      <div className="bfs-trace-grid">
+        {lesson.breadthFirstSearch.trace.map((step) => (
+          <article className="bfs-trace-card" key={step.step}>
+            <p className="section-label">Step {step.step}</p>
+
+            <div className="bfs-current">
+              <span>Current vertex</span>
+              <strong>{step.current}</strong>
+            </div>
+
+            <div className="bfs-trace-state">
+              <div>
+                <span>Queue</span>
+                <p>
+                  {step.queue.length > 0
+                    ? step.queue.join(' → ')
+                    : 'Empty'}
+                </p>
+              </div>
+
+              <div>
+                <span>Visited</span>
+                <p>{step.visited.join(', ')}</p>
+              </div>
+            </div>
+
+            <p>{step.message}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="bfs-order">
+      <p className="section-label">Traversal Order</p>
+
+      <div className="bfs-order-row">
+        {lesson.breadthFirstSearch.order.map((vertex, index) => (
+          <div className="bfs-order-item" key={vertex}>
+            <span className="bfs-order-vertex">{vertex}</span>
+
+            {index < lesson.breadthFirstSearch.order.length - 1 && (
+              <span className="bfs-order-arrow">→</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="bfs-complexity">
+      <h3>BFS Complexity</h3>
+
+      <div className="bfs-complexity-grid">
+        <article>
+          <span>Time Complexity</span>
+          <strong>
+            {lesson.breadthFirstSearch.complexity.time}
+          </strong>
+        </article>
+
+        <article>
+          <span>Space Complexity</span>
+          <strong>
+            {lesson.breadthFirstSearch.complexity.space}
+          </strong>
+        </article>
+      </div>
+
+      <p>{lesson.breadthFirstSearch.complexity.explanation}</p>
+    </div>
+
+    <div className="key-idea">
+      <strong>Shortest-path connection:</strong>
+      <p>{lesson.breadthFirstSearch.shortestPathNote}</p>
+    </div>
+  </section>
+)}
+{lesson.depthFirstSearch && (
+  <section className="lesson-section dfs-section">
+    <p className="section-label">Graph Traversal</p>
+    <h2>{lesson.depthFirstSearch.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.depthFirstSearch.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.depthFirstSearch.keyIdea}</p>
+    </div>
+
+    <div className="dfs-code-section">
+      <h3>Python Example</h3>
+
+      <pre className="python-code">
+        <code>{lesson.depthFirstSearch.code}</code>
+      </pre>
+    </div>
+
+    <div className="dfs-explanation-section">
+      <h3>Line-by-Line Explanation</h3>
+
+      <div className="code-explanations">
+        {lesson.depthFirstSearch.lineByLine.map((item) => (
+          <div className="code-explanation" key={item.line}>
+            <code>{item.line}</code>
+            <p>{item.explanation}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="dfs-trace-section">
+      <h3>
+        DFS Trace: Start at {lesson.depthFirstSearch.start}
+      </h3>
+
+      <div className="dfs-trace-grid">
+        {lesson.depthFirstSearch.trace.map((step) => (
+          <article className="dfs-trace-card" key={step.step}>
+            <p className="section-label">Step {step.step}</p>
+
+            <div className="dfs-current">
+              <span>Current vertex</span>
+              <strong>{step.current}</strong>
+            </div>
+
+            <div className="dfs-trace-state">
+              <div>
+                <span>Current path</span>
+                <p>{step.path.join(' → ')}</p>
+              </div>
+
+              <div>
+                <span>Visited</span>
+                <p>{step.visited.join(', ')}</p>
+              </div>
+            </div>
+
+            <p>{step.message}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="dfs-order">
+      <p className="section-label">Traversal Order</p>
+
+      <div className="dfs-order-row">
+        {lesson.depthFirstSearch.order.map((vertex, index) => (
+          <div className="dfs-order-item" key={vertex}>
+            <span className="dfs-order-vertex">{vertex}</span>
+
+            {index < lesson.depthFirstSearch.order.length - 1 && (
+              <span className="dfs-order-arrow">→</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="dfs-complexity">
+      <h3>DFS Complexity</h3>
+
+      <div className="dfs-complexity-grid">
+        <article>
+          <span>Time Complexity</span>
+          <strong>{lesson.depthFirstSearch.complexity.time}</strong>
+        </article>
+
+        <article>
+          <span>Space Complexity</span>
+          <strong>{lesson.depthFirstSearch.complexity.space}</strong>
+        </article>
+      </div>
+
+      <p>{lesson.depthFirstSearch.complexity.explanation}</p>
+    </div>
+
+    <div className="key-idea">
+      <strong>Backtracking:</strong>
+      <p>{lesson.depthFirstSearch.backtrackingNote}</p>
+    </div>
+  </section>
+)}
+{lesson.topologicalSort && (
+  <section className="lesson-section topological-section">
+    <p className="section-label">Directed Acyclic Graphs</p>
+    <h2>{lesson.topologicalSort.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.topologicalSort.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.topologicalSort.keyIdea}</p>
+    </div>
+
+    <div className="topological-dependencies">
+      <h3>Graph Dependencies</h3>
+
+      <div className="topological-edge-grid">
+        {lesson.topologicalSort.edges.map((edge) => (
+          <article
+            className="topological-edge-card"
+            key={`${edge.from}-${edge.to}`}
+          >
+            <span className="topological-vertex">{edge.from}</span>
+            <span className="topological-arrow">→</span>
+            <span className="topological-vertex">{edge.to}</span>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="topological-code-section">
+      <h3>Python Example</h3>
+
+      <pre className="python-code">
+        <code>{lesson.topologicalSort.code}</code>
+      </pre>
+    </div>
+
+    <div className="topological-explanation-section">
+      <h3>Line-by-Line Explanation</h3>
+
+      <div className="code-explanations">
+        {lesson.topologicalSort.lineByLine.map((item) => (
+          <div className="code-explanation" key={item.line}>
+            <code>{item.line}</code>
+            <p>{item.explanation}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="topological-indegree-section">
+      <h3>Initial In-Degree Counts</h3>
+
+      <p className="lesson-body">
+        In-degree counts how many directed edges enter each vertex.
+        Vertices with an in-degree of 0 have no remaining prerequisites.
+      </p>
+
+      <div className="topological-indegree-grid">
+        {lesson.topologicalSort.initialIndegree.map((item) => (
+          <article
+            className="topological-indegree-card"
+            key={item.vertex}
+          >
+            <span>Vertex</span>
+            <strong>{item.vertex}</strong>
+            <p>In-degree: {item.indegree}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="topological-trace-section">
+      <h3>Topological Sort Trace</h3>
+
+      <div className="topological-trace-grid">
+        {lesson.topologicalSort.trace.map((step) => (
+          <article
+            className="topological-trace-card"
+            key={step.step}
+          >
+            <p className="section-label">Step {step.step}</p>
+
+            <div className="topological-current">
+              <span>Current vertex</span>
+              <strong>{step.current}</strong>
+            </div>
+
+            <div className="topological-trace-state">
+              <div>
+                <span>Queue</span>
+                <p>
+                  {step.queue.length > 0
+                    ? step.queue.join(' → ')
+                    : 'Empty'}
+                </p>
+              </div>
+
+              <div>
+                <span>Current order</span>
+                <p>{step.order.join(' → ')}</p>
+              </div>
+            </div>
+
+            <p>{step.message}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="topological-order">
+      <p className="section-label">Topological Order</p>
+
+      <div className="topological-order-row">
+        {lesson.topologicalSort.order.map((vertex, index) => (
+          <div className="topological-order-item" key={vertex}>
+            <span className="topological-order-vertex">
+              {vertex}
+            </span>
+
+            {index < lesson.topologicalSort.order.length - 1 && (
+              <span className="topological-order-arrow">→</span>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="topological-complexity">
+      <h3>Topological Sort Complexity</h3>
+
+      <div className="topological-complexity-grid">
+        <article>
+          <span>Time Complexity</span>
+          <strong>
+            {lesson.topologicalSort.complexity.time}
+          </strong>
+        </article>
+
+        <article>
+          <span>Space Complexity</span>
+          <strong>
+            {lesson.topologicalSort.complexity.space}
+          </strong>
+        </article>
+      </div>
+
+      <p>{lesson.topologicalSort.complexity.explanation}</p>
+    </div>
+
+    <div className="key-idea">
+      <strong>Cycle detection:</strong>
+      <p>{lesson.topologicalSort.cycleNote}</p>
+    </div>
+
+    <div className="key-idea">
+      <strong>Real-world applications:</strong>
+      <p>{lesson.topologicalSort.applicationNote}</p>
+    </div>
+  </section>
+)}
+{lesson.dijkstra && (
+  <section className="lesson-section dijkstra-section">
+    <p className="section-label">Shortest Paths</p>
+    <h2>{lesson.dijkstra.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.dijkstra.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.dijkstra.keyIdea}</p>
+    </div>
+
+    <div className="dijkstra-warning">
+      <strong>Important:</strong>
+      <p>{lesson.dijkstra.warning}</p>
+    </div>
+
+    <div className="dijkstra-graph-wrapper">
+      <svg
+        className="dijkstra-graph"
+        viewBox="0 0 680 390"
+        role="img"
+        aria-label="Weighted graph used in the Dijkstra example"
+      >
+        {lesson.dijkstra.edges.map((edge) => {
+          const from = lesson.dijkstra.vertices.find(
+            (vertex) => vertex.id === edge.from
+          )
+
+          const to = lesson.dijkstra.vertices.find(
+            (vertex) => vertex.id === edge.to
+          )
+
+          const middleX = (from.x + to.x) / 2
+          const middleY = (from.y + to.y) / 2
+
+          return (
+            <g key={`${edge.from}-${edge.to}`}>
+              <line
+                className="dijkstra-edge"
+                x1={from.x}
+                y1={from.y}
+                x2={to.x}
+                y2={to.y}
+              />
+
+              <circle
+                className="dijkstra-weight-background"
+                cx={middleX}
+                cy={middleY}
+                r="18"
+              />
+
+              <text
+                className="dijkstra-weight"
+                x={middleX}
+                y={middleY}
+                textAnchor="middle"
+                dominantBaseline="middle"
+              >
+                {edge.weight}
+              </text>
+            </g>
+          )
+        })}
+
+        {lesson.dijkstra.vertices.map((vertex) => (
+          <g key={vertex.id}>
+            <circle
+              className={
+                vertex.id === lesson.dijkstra.start
+                  ? 'dijkstra-vertex dijkstra-start-vertex'
+                  : 'dijkstra-vertex'
+              }
+              cx={vertex.x}
+              cy={vertex.y}
+              r="38"
+            />
+
+            <text
+              className="dijkstra-vertex-label"
+              x={vertex.x}
+              y={vertex.y}
+              textAnchor="middle"
+              dominantBaseline="middle"
+            >
+              {vertex.id}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+
+    <div className="dijkstra-code-section">
+      <h3>Python Example</h3>
+
+      <pre className="python-code">
+        <code>{lesson.dijkstra.code}</code>
+      </pre>
+    </div>
+
+    <div className="dijkstra-explanation-section">
+      <h3>Line-by-Line Explanation</h3>
+
+      <div className="code-explanations">
+        {lesson.dijkstra.lineByLine.map((item) => (
+          <div className="code-explanation" key={item.line}>
+            <code>{item.line}</code>
+            <p>{item.explanation}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div className="dijkstra-trace-section">
+      <h3>
+        Dijkstra Trace: Start at {lesson.dijkstra.start}
+      </h3>
+
+      <div className="dijkstra-trace-grid">
+        {lesson.dijkstra.trace.map((step) => (
+          <article className="dijkstra-trace-card" key={step.step}>
+            <p className="section-label">Step {step.step}</p>
+
+            <div className="dijkstra-current">
+              <span>Current vertex</span>
+              <strong>{step.current}</strong>
+            </div>
+
+            <div className="dijkstra-distance-grid">
+              {Object.entries(step.distances).map(
+                ([vertex, distance]) => (
+                  <div
+                    className={
+                      vertex === step.current
+                        ? 'dijkstra-distance active'
+                        : 'dijkstra-distance'
+                    }
+                    key={vertex}
+                  >
+                    <span>{vertex}</span>
+                    <strong>{distance}</strong>
+                  </div>
+                )
+              )}
+            </div>
+
+            <p className="dijkstra-visited">
+              <strong>Visited:</strong> {step.visited.join(', ')}
+            </p>
+
+            <p>{step.message}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="dijkstra-results">
+      <h3>
+        Final Shortest Paths from {lesson.dijkstra.start}
+      </h3>
+
+      <div className="dijkstra-results-wrapper">
+        <table className="dijkstra-results-table">
+          <thead>
+            <tr>
+              <th>Vertex</th>
+              <th>Distance</th>
+              <th>Shortest path</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {lesson.dijkstra.shortestPaths.map((result) => (
+              <tr key={result.vertex}>
+                <td>{result.vertex}</td>
+                <td>{result.distance}</td>
+                <td>{result.path}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="dijkstra-complexity">
+      <h3>Dijkstra Complexity</h3>
+
+      <div className="dijkstra-complexity-grid">
+        <article>
+          <span>Time Complexity</span>
+          <strong>{lesson.dijkstra.complexity.time}</strong>
+        </article>
+
+        <article>
+          <span>Space Complexity</span>
+          <strong>{lesson.dijkstra.complexity.space}</strong>
+        </article>
+      </div>
+
+      <p>{lesson.dijkstra.complexity.explanation}</p>
+    </div>
+  </section>
+)}
+{lesson.minimumSpanningTrees && (
+  <section className="lesson-section mst-section">
+    <p className="section-label">Minimum Spanning Trees</p>
+    <h2>{lesson.minimumSpanningTrees.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.minimumSpanningTrees.introduction}
+    </p>
+
+    <div className="mst-requirements">
+      {lesson.minimumSpanningTrees.requirements.map((requirement) => (
+        <div className="mst-requirement" key={requirement}>
+          <span>✓</span>
+          <p>{requirement}</p>
+        </div>
+      ))}
+    </div>
+
+    <div className="mst-edge-table-wrapper">
+      <h3>Available Edges</h3>
+
+      <table className="mst-edge-table">
+        <thead>
+          <tr>
+            <th>Edge</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {lesson.minimumSpanningTrees.edges.map((edge) => (
+            <tr key={`${edge.from}-${edge.to}`}>
+              <td>
+                {edge.from} — {edge.to}
+              </td>
+              <td>{edge.weight}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="mst-algorithm-grid">
+      <article className="mst-algorithm-card prim-card">
+        <p className="section-label">Grow One Tree</p>
+        <h3>{lesson.minimumSpanningTrees.prim.title}</h3>
+
+        <p>{lesson.minimumSpanningTrees.prim.strategy}</p>
+
+        <div className="mst-start">
+          Starting vertex:
+          <strong>{lesson.minimumSpanningTrees.prim.start}</strong>
+        </div>
+
+        <div className="mst-steps">
+          {lesson.minimumSpanningTrees.prim.steps.map((step) => (
+            <div className="mst-step" key={`prim-${step.step}`}>
+              <div className="mst-step-heading">
+                <span>Step {step.step}</span>
+                <strong>{step.edge}</strong>
+                <b>Weight {step.weight}</b>
+              </div>
+
+              <p>{step.message}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+
+      <article className="mst-algorithm-card kruskal-card">
+        <p className="section-label">Join Components</p>
+        <h3>{lesson.minimumSpanningTrees.kruskal.title}</h3>
+
+        <p>{lesson.minimumSpanningTrees.kruskal.strategy}</p>
+
+        <div className="mst-steps">
+          {lesson.minimumSpanningTrees.kruskal.steps.map((step) => (
+            <div
+              className={`mst-step ${
+                step.decision === 'Reject' ? 'mst-step-rejected' : ''
+              }`}
+              key={`kruskal-${step.step}`}
+            >
+              <div className="mst-step-heading">
+                <span>Step {step.step}</span>
+                <strong>{step.edge}</strong>
+                <b>Weight {step.weight}</b>
+              </div>
+
+              <span
+                className={`mst-decision ${
+                  step.decision === 'Accept'
+                    ? 'mst-decision-accept'
+                    : 'mst-decision-reject'
+                }`}
+              >
+                {step.decision}
+              </span>
+
+              <p>{step.message}</p>
+            </div>
+          ))}
+        </div>
+      </article>
+    </div>
+
+    <div className="mst-result">
+      <p className="section-label">Minimum Spanning Tree Result</p>
+
+      <div className="mst-result-edges">
+        {lesson.minimumSpanningTrees.result.edges.map((edge, index) => (
+          <div className="mst-result-edge" key={edge}>
+            <span>{edge}</span>
+
+            {index <
+              lesson.minimumSpanningTrees.result.edges.length - 1 && (
+              <span className="mst-result-plus">+</span>
+            )}
+          </div>
+        ))}
+      </div>
+
+      <div className="mst-total">
+        <span>Total Weight</span>
+        <strong>{lesson.minimumSpanningTrees.result.totalWeight}</strong>
+      </div>
+    </div>
+
+    <div className="mst-comparison-wrapper">
+      <h3>Prim’s vs. Kruskal’s</h3>
+
+      <div className="table-scroll">
+        <table className="mst-comparison-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Prim’s</th>
+              <th>Kruskal’s</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {lesson.minimumSpanningTrees.comparison.map((row) => (
+              <tr key={row.feature}>
+                <th>{row.feature}</th>
+                <td>{row.prim}</td>
+                <td>{row.kruskal}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div className="mst-complexity">
+      <h3>MST Complexity</h3>
+
+      <div className="mst-complexity-grid">
+        <article>
+          <span>Prim’s Algorithm</span>
+          <strong>{lesson.minimumSpanningTrees.complexity.prim}</strong>
+        </article>
+
+        <article>
+          <span>Kruskal’s Algorithm</span>
+          <strong>{lesson.minimumSpanningTrees.complexity.kruskal}</strong>
+        </article>
+      </div>
+
+      <p>{lesson.minimumSpanningTrees.complexity.explanation}</p>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.minimumSpanningTrees.keyIdea}</p>
+    </div>
+  </section>
+)}
 
         {lesson.treeAnatomy && (
   <section className="lesson-section tree-anatomy-section">
@@ -2855,14 +4172,9 @@ None
 )}
 
 {lesson.commonMistakes && (
-  <section className="lesson-section">
-    <p className="section-label">
-      Common Mistakes
-    </p>
-
-    <h2>
-      {lesson.commonMistakes.title}
-    </h2>
+  <section className="lesson-section common-mistakes-section">
+    <p className="section-label">Common Mistakes</p>
+    <h2>{lesson.commonMistakes.title}</h2>
 
     <p className="lesson-body">
       {lesson.commonMistakes.introduction}
@@ -2870,49 +4182,46 @@ None
 
     <div className="common-mistakes-grid">
       {lesson.commonMistakes.mistakes.map((mistake) => (
-        <article
-          className="mistake-card"
-          key={mistake.title}
-        >
+        <article className="mistake-card" key={mistake.title}>
           <h3>{mistake.title}</h3>
 
           <p className="mistake-problem">
-            {mistake.problem}
+            {mistake.explanation}
           </p>
 
           <div className="mistake-code-grid">
-
             <div className="code-example bad-example">
-              <span className="code-label">
-                ❌ Incorrect
-              </span>
+              <span className="code-label">✕ Incorrect</span>
 
               <pre className="python-code">
-                <code>{mistake.badCode}</code>
+                <code>{mistake.incorrectCode}</code>
               </pre>
             </div>
 
             <div className="code-example good-example">
-              <span className="code-label">
-                ✓ Correct
-              </span>
+              <span className="code-label">✓ Correct</span>
 
               <pre className="python-code">
-                <code>{mistake.goodCode}</code>
+                <code>{mistake.correctCode}</code>
               </pre>
             </div>
-
           </div>
 
           <div className="mistake-lesson">
             <strong>Remember:</strong>
-            <p>{mistake.lesson}</p>
+            <p>{mistake.reminder}</p>
           </div>
         </article>
       ))}
     </div>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.commonMistakes.keyIdea}</p>
+    </div>
   </section>
 )}
+
 
 {lesson.practice && (
   <section className="lesson-section">
