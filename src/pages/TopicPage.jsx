@@ -118,6 +118,389 @@ function TopicPage() {
             ))}
           </div>
         </section>
+
+        {lesson.strategyOverview && (
+  <section className="lesson-section design-strategies-section">
+    <p className="section-label">Algorithm Design Strategies</p>
+
+    <h2>{lesson.strategyOverview.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.strategyOverview.introduction}
+    </p>
+
+    <div className="design-strategy-grid">
+      {lesson.strategyOverview.strategies.map((strategy) => (
+        <article
+          className="design-strategy-card"
+          key={strategy.name}
+        >
+          <h3>{strategy.name}</h3>
+
+          <div className="design-strategy-detail">
+            <strong>Core idea</strong>
+            <p>{strategy.coreIdea}</p>
+          </div>
+
+          <div className="design-strategy-detail">
+            <strong>Useful for</strong>
+            <p>{strategy.usefulFor}</p>
+          </div>
+
+          <div className="design-strategy-example">
+            <strong>Example</strong>
+            <p>{strategy.example}</p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+      <p>{lesson.strategyOverview.keyIdea}</p>
+    </div>
+  </section>
+)}
+{lesson.greedyAlgorithms && (
+  <section className="lesson-section greedy-section">
+    <p className="section-label">Greedy Strategy</p>
+    <h2>{lesson.greedyAlgorithms.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.greedyAlgorithms.introduction}
+    </p>
+
+    <div className="greedy-process-grid">
+      {lesson.greedyAlgorithms.process.map((item) => (
+        <article className="greedy-process-card" key={item.step}>
+          <span className="greedy-step-number">
+            Step {item.step}
+          </span>
+
+          <h3>{item.title}</h3>
+          <p>{item.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.greedyAlgorithms.keyIdea}</p>
+    </div>
+
+    <div className="greedy-example">
+      <h3>
+        {lesson.greedyAlgorithms.activitySelection.title}
+      </h3>
+
+      <p className="lesson-body">
+        {lesson.greedyAlgorithms.activitySelection.explanation}
+      </p>
+
+      <h4>Activities</h4>
+
+      <div className="activity-grid">
+        {lesson.greedyAlgorithms.activitySelection.activities.map(
+          (activity) => (
+            <article className="activity-card" key={activity.name}>
+              <strong>Activity {activity.name}</strong>
+              <span>Start: {activity.start}</span>
+              <span>Finish: {activity.finish}</span>
+            </article>
+          )
+        )}
+      </div>
+
+      <h4>Python Example</h4>
+
+      <pre className="python-code">
+        <code>
+          {lesson.greedyAlgorithms.activitySelection.code}
+        </code>
+      </pre>
+
+      <h4>Decision Trace</h4>
+
+      <div className="greedy-trace-grid">
+        {lesson.greedyAlgorithms.activitySelection.trace.map(
+          (item) => (
+            <article
+              className={`greedy-trace-card ${
+                item.decision === 'Select'
+                  ? 'greedy-selected'
+                  : 'greedy-skipped'
+              }`}
+              key={item.activity}
+            >
+              <div className="greedy-trace-heading">
+                <strong>Activity {item.activity}</strong>
+                <span>{item.decision}</span>
+              </div>
+
+              <p>{item.explanation}</p>
+            </article>
+          )
+        )}
+      </div>
+
+      <div className="greedy-result">
+        <strong>Selected activities:</strong>
+        <span>
+          {lesson.greedyAlgorithms.activitySelection.result.join(
+            ' → '
+          )}
+        </span>
+      </div>
+    </div>
+
+    <div className="greedy-summary-grid">
+      <article className="greedy-works-card">
+        <h3>When Greedy Works</h3>
+
+        <ul>
+          {lesson.greedyAlgorithms.whenItWorks.map((item) => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </article>
+
+      <article className="greedy-limitation-card">
+        <h3>
+          {lesson.greedyAlgorithms.limitation.title}
+        </h3>
+
+        <p>
+          {lesson.greedyAlgorithms.limitation.explanation}
+        </p>
+
+        <div className="greedy-limitation-example">
+          <strong>Example</strong>
+          <p>{lesson.greedyAlgorithms.limitation.example}</p>
+        </div>
+      </article>
+    </div>
+  </section>
+)}
+{lesson.divideAndConquer && (
+  <section className="lesson-section divide-conquer-section">
+    <p className="section-label">Design Strategy</p>
+
+    <h2>{lesson.divideAndConquer.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.divideAndConquer.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.divideAndConquer.keyIdea}</p>
+    </div>
+
+    <div className="divide-process-grid">
+      {lesson.divideAndConquer.process.map((item) => (
+        <article className="divide-process-card" key={item.step}>
+          <span className="divide-step-number">
+            Step {item.step}
+          </span>
+
+          <h3>{item.title}</h3>
+
+          <p>{item.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="merge-sort-example">
+      <p className="section-label">Python Example</p>
+
+      <h3>{lesson.divideAndConquer.mergeSort.title}</h3>
+
+      <p className="lesson-body">
+        {lesson.divideAndConquer.mergeSort.explanation}
+      </p>
+
+      <div className="merge-original">
+        <span>Original list</span>
+
+        <div className="merge-values">
+          {lesson.divideAndConquer.mergeSort.original.map(
+            (value, index) => (
+              <span
+                className="merge-value"
+                key={`${value}-${index}`}
+              >
+                {value}
+              </span>
+            )
+          )}
+        </div>
+      </div>
+
+      <div className="merge-trace-grid">
+        <div className="merge-trace-column">
+          <h4>Divide</h4>
+
+          {lesson.divideAndConquer.mergeSort.divideLevels.map(
+            (level, levelIndex) => (
+              <article
+                className="merge-level-card"
+                key={`divide-${levelIndex}`}
+              >
+                <span className="merge-level-label">
+                  Level {levelIndex + 1}
+                </span>
+
+                <div className="merge-groups">
+                  {level.map((group, groupIndex) => (
+                    <span
+                      className="merge-group"
+                      key={`divide-${levelIndex}-${groupIndex}`}
+                    >
+                      [{group.join(', ')}]
+                    </span>
+                  ))}
+                </div>
+              </article>
+            )
+          )}
+        </div>
+
+        <div className="merge-trace-column merge-column">
+          <h4>Combine</h4>
+
+          {lesson.divideAndConquer.mergeSort.mergeLevels.map(
+            (level, levelIndex) => (
+              <article
+                className="merge-level-card"
+                key={`merge-${levelIndex}`}
+              >
+                <span className="merge-level-label">
+                  Level {levelIndex + 1}
+                </span>
+
+                <div className="merge-groups">
+                  {level.map((group, groupIndex) => (
+                    <span
+                      className="merge-group"
+                      key={`merge-${levelIndex}-${groupIndex}`}
+                    >
+                      [{group.join(', ')}]
+                    </span>
+                  ))}
+                </div>
+              </article>
+            )
+          )}
+        </div>
+      </div>
+
+      <div className="merge-result">
+        <strong>Sorted result</strong>
+
+        <div className="merge-values">
+          {lesson.divideAndConquer.mergeSort.result.map(
+            (value, index) => (
+              <span
+                className="merge-value"
+                key={`result-${value}-${index}`}
+              >
+                {value}
+              </span>
+            )
+          )}
+        </div>
+      </div>
+
+      <h4 className="subsection-title">Python Code</h4>
+
+      <pre className="python-code">
+        <code>{lesson.divideAndConquer.mergeSort.code}</code>
+      </pre>
+
+      <h4 className="subsection-title">
+        Line-by-Line Explanation
+      </h4>
+
+      <div className="divide-line-grid">
+        {lesson.divideAndConquer.mergeSort.lineByLine.map(
+          (item, index) => (
+            <article
+              className="divide-line-card"
+              key={`${item.line}-${index}`}
+            >
+              <code>{item.line}</code>
+
+              <p>{item.explanation}</p>
+            </article>
+          )
+        )}
+      </div>
+    </div>
+
+    <div className="divide-complexity">
+      <h3>Merge Sort Complexity</h3>
+
+      <div className="divide-complexity-grid">
+        {lesson.divideAndConquer.complexity.map((item) => (
+          <article
+            className="divide-complexity-card"
+            key={item.measurement}
+          >
+            <div className="divide-complexity-heading">
+              <h4>{item.measurement}</h4>
+
+              <strong>{item.complexity}</strong>
+            </div>
+
+            <p>{item.explanation}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="subproblem-comparison">
+      <h3>{lesson.divideAndConquer.comparison.title}</h3>
+
+      <div className="subproblem-comparison-grid">
+        <article className="subproblem-card independent-card">
+          <span className="section-label">
+            Divide and Conquer
+          </span>
+
+          <h4>Independent subproblems</h4>
+
+          <p>
+            {
+              lesson.divideAndConquer.comparison
+                .divideAndConquer
+            }
+          </p>
+        </article>
+
+        <article className="subproblem-card overlapping-card">
+          <span className="section-label">
+            Dynamic Programming
+          </span>
+
+          <h4>Overlapping subproblems</h4>
+
+          <p>
+            {
+              lesson.divideAndConquer.comparison
+                .dynamicProgramming
+            }
+          </p>
+        </article>
+      </div>
+    </div>
+
+    <div className="key-idea">
+      <strong>Remember:</strong>
+
+      <p>{lesson.divideAndConquer.keyIdea}</p>
+    </div>
+  </section>
+)}
         {lesson.graphFundamentals && (
           <section className="lesson-section graph-fundamentals-section">
             <p className="section-label">Graph Fundamentals</p>
