@@ -888,6 +888,7 @@ function TopicPage() {
     </div>
   </section>
 )}
+
 {lesson.randomizedAlgorithms && (
   <section className="lesson-section randomized-section">
     <p className="section-label">Randomized Strategy</p>
@@ -917,28 +918,28 @@ function TopicPage() {
       <p className="section-label">Worked Example</p>
 
       <h3>
-        {lesson.randomizedAlgorithms.randomizedQuicksort.title}
+        {lesson.randomizedAlgorithms.randomizedQuickSort.title}
       </h3>
 
       <p>
-        {lesson.randomizedAlgorithms.randomizedQuicksort.explanation}
+        {lesson.randomizedAlgorithms.randomizedQuickSort.explanation}
       </p>
 
       <h4>Starting Values</h4>
 
       <div className="randomized-value-list">
-        {lesson.randomizedAlgorithms.randomizedQuicksort.startingValues.map(
-          (value, index) => (
-            <span key={`${value}-${index}`}>{value}</span>
-          )
-        )}
-      </div>
+  {(lesson.randomizedAlgorithms.randomizedQuickSort.values ?? []).map(
+    (value, index) => (
+      <span key={`${value}-${index}`}>{value}</span>
+    )
+  )}
+</div>
 
       <h4>Python Example</h4>
 
       <pre className="python-code">
         <code>
-          {lesson.randomizedAlgorithms.randomizedQuicksort.code}
+          {lesson.randomizedAlgorithms.randomizedQuickSort.code}
         </code>
       </pre>
 
@@ -946,13 +947,13 @@ function TopicPage() {
 
       <p>
         {
-          lesson.randomizedAlgorithms.randomizedQuicksort
+          lesson.randomizedAlgorithms.randomizedQuickSort
             .traceIntroduction
         }
       </p>
 
       <div className="randomized-trace">
-        {lesson.randomizedAlgorithms.randomizedQuicksort.trace.map(
+        {lesson.randomizedAlgorithms.randomizedQuickSort.trace.map(
           (traceItem) => (
             <article
               className="randomized-trace-card"
@@ -1017,7 +1018,7 @@ function TopicPage() {
         <strong>Sorted Result</strong>
 
         <div className="randomized-value-list">
-          {lesson.randomizedAlgorithms.randomizedQuicksort.result.map(
+          {lesson.randomizedAlgorithms.randomizedQuickSort.result.map(
             (value, index) => (
               <span key={`${value}-result-${index}`}>{value}</span>
             )
@@ -1045,7 +1046,7 @@ function TopicPage() {
           <div>
             <span>Average Case</span>
             <strong>
-              {lesson.randomizedAlgorithms.complexity.averageCase}
+              {lesson.randomizedAlgorithms.complexity.average}
             </strong>
           </div>
 
