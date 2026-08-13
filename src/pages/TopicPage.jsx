@@ -202,7 +202,7 @@ function TopicPage() {
       <div className="activity-grid">
         {lesson.greedyAlgorithms.activitySelection.activities.map(
           (activity) => (
-            <article className="activity-card" key={activity.name}>
+            <article className="activity-card">
               <strong>Activity {activity.name}</strong>
               <span>Start: {activity.start}</span>
               <span>Finish: {activity.finish}</span>
@@ -233,7 +233,7 @@ function TopicPage() {
               key={item.activity}
             >
               <div className="greedy-trace-heading">
-                <strong>Activity {item.activity}</strong>
+                <span>Activity {item.activity}</span>
                 <span>{item.decision}</span>
               </div>
 
@@ -885,6 +885,185 @@ function TopicPage() {
     <div className="key-idea backtracking-limitation">
       <strong>Remember:</strong>
       <p>{lesson.backtracking.limitation}</p>
+    </div>
+  </section>
+)}
+{lesson.randomizedAlgorithms && (
+  <section className="lesson-section randomized-section">
+    <p className="section-label">Randomized Strategy</p>
+
+    <h2>{lesson.randomizedAlgorithms.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.randomizedAlgorithms.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.randomizedAlgorithms.keyIdea}</p>
+    </div>
+
+    <div className="randomized-process-grid">
+      {lesson.randomizedAlgorithms.process.map((item) => (
+        <article className="randomized-process-card" key={item.step}>
+          <span className="step-label">Step {item.step}</span>
+          <h3>{item.title}</h3>
+          <p>{item.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="randomized-quicksort-example">
+      <p className="section-label">Worked Example</p>
+
+      <h3>
+        {lesson.randomizedAlgorithms.randomizedQuicksort.title}
+      </h3>
+
+      <p>
+        {lesson.randomizedAlgorithms.randomizedQuicksort.explanation}
+      </p>
+
+      <h4>Starting Values</h4>
+
+      <div className="randomized-value-list">
+        {lesson.randomizedAlgorithms.randomizedQuicksort.startingValues.map(
+          (value, index) => (
+            <span key={`${value}-${index}`}>{value}</span>
+          )
+        )}
+      </div>
+
+      <h4>Python Example</h4>
+
+      <pre className="python-code">
+        <code>
+          {lesson.randomizedAlgorithms.randomizedQuicksort.code}
+        </code>
+      </pre>
+
+      <h4>One Possible Trace</h4>
+
+      <p>
+        {
+          lesson.randomizedAlgorithms.randomizedQuicksort
+            .traceIntroduction
+        }
+      </p>
+
+      <div className="randomized-trace">
+        {lesson.randomizedAlgorithms.randomizedQuicksort.trace.map(
+          (traceItem) => (
+            <article
+              className="randomized-trace-card"
+              key={traceItem.step}
+            >
+              <div className="randomized-trace-heading">
+                <span>Step {traceItem.step}</span>
+                <h4>{traceItem.title}</h4>
+              </div>
+
+              {traceItem.values && (
+                <p className="randomized-trace-values">
+                  <strong>Values:</strong>{' '}
+                  {traceItem.values.join(', ')}
+                </p>
+              )}
+
+              {traceItem.pivot !== undefined && (
+                <>
+                  <p className="randomized-pivot">
+                    <strong>Pivot:</strong> {traceItem.pivot}
+                  </p>
+
+                  <div className="randomized-partition-grid">
+                    <div>
+                      <span>Smaller</span>
+                      <strong>
+                        {traceItem.smaller.length
+                          ? traceItem.smaller.join(', ')
+                          : 'None'}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>Equal</span>
+                      <strong>
+                        {traceItem.equal.length
+                          ? traceItem.equal.join(', ')
+                          : 'None'}
+                      </strong>
+                    </div>
+
+                    <div>
+                      <span>Larger</span>
+                      <strong>
+                        {traceItem.larger.length
+                          ? traceItem.larger.join(', ')
+                          : 'None'}
+                      </strong>
+                    </div>
+                  </div>
+                </>
+              )}
+
+              <p>{traceItem.explanation}</p>
+            </article>
+          )
+        )}
+      </div>
+
+      <div className="randomized-result">
+        <strong>Sorted Result</strong>
+
+        <div className="randomized-value-list">
+          {lesson.randomizedAlgorithms.randomizedQuicksort.result.map(
+            (value, index) => (
+              <span key={`${value}-result-${index}`}>{value}</span>
+            )
+          )}
+        </div>
+      </div>
+    </div>
+
+    <h3>Why Randomness Helps</h3>
+
+    <div className="randomized-benefits-grid">
+      {lesson.randomizedAlgorithms.whyRandomnessHelps.map((item) => (
+        <article className="randomized-benefit-card" key={item.title}>
+          <h4>{item.title}</h4>
+          <p>{item.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="randomized-summary-grid">
+      <article className="randomized-complexity-card">
+        <h3>{lesson.randomizedAlgorithms.complexity.title}</h3>
+
+        <div className="randomized-complexity-values">
+          <div>
+            <span>Average Case</span>
+            <strong>
+              {lesson.randomizedAlgorithms.complexity.averageCase}
+            </strong>
+          </div>
+
+          <div>
+            <span>Worst Case</span>
+            <strong>
+              {lesson.randomizedAlgorithms.complexity.worstCase}
+            </strong>
+          </div>
+        </div>
+
+        <p>{lesson.randomizedAlgorithms.complexity.explanation}</p>
+      </article>
+
+      <article className="randomized-limitation-card">
+        <h3>{lesson.randomizedAlgorithms.limitation.title}</h3>
+        <p>{lesson.randomizedAlgorithms.limitation.explanation}</p>
+      </article>
     </div>
   </section>
 )}
@@ -4957,7 +5136,7 @@ None
           <h3>{mistake.title}</h3>
 
           <p className="mistake-problem">
-            {mistake.explanation}
+            {mistake.explanation ?? mistake.problem}
           </p>
 
           <div className="mistake-code-grid">
@@ -4965,7 +5144,7 @@ None
               <span className="code-label">✕ Incorrect</span>
 
               <pre className="python-code">
-                <code>{mistake.incorrectCode}</code>
+                <code>{mistake.incorrectCode ?? mistake.badCode}</code>
               </pre>
             </div>
 
@@ -4973,14 +5152,14 @@ None
               <span className="code-label">✓ Correct</span>
 
               <pre className="python-code">
-                <code>{mistake.correctCode}</code>
+                <code>{mistake.correctCode ?? mistake.goodCode}</code>
               </pre>
             </div>
           </div>
 
           <div className="mistake-lesson">
             <strong>Remember:</strong>
-            <p>{mistake.reminder}</p>
+            <p>{mistake.reminder ?? mistake.lesson}</p>
           </div>
         </article>
       ))}
