@@ -501,6 +501,394 @@ function TopicPage() {
     </div>
   </section>
 )}
+{lesson.dynamicProgramming && (
+  <section className="lesson-section dynamic-programming-section">
+    <p className="section-label">Dynamic Programming</p>
+
+    <h2>{lesson.dynamicProgramming.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.dynamicProgramming.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.dynamicProgramming.keyIdea}</p>
+    </div>
+
+    <h3>When Dynamic Programming Applies</h3>
+
+    <div className="dp-requirements">
+      {lesson.dynamicProgramming.requirements.map((requirement) => (
+        <article className="dp-requirement-card" key={requirement.name}>
+          <h4>{requirement.name}</h4>
+          <p>{requirement.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="dp-fibonacci-section">
+      <p className="section-label">Example</p>
+
+      <h3>{lesson.dynamicProgramming.fibonacci.title}</h3>
+
+      <p className="lesson-body">
+        {lesson.dynamicProgramming.fibonacci.explanation}
+      </p>
+
+      <div className="dp-recurrence-card">
+        <span>Recurrence</span>
+
+        <code>
+          {lesson.dynamicProgramming.fibonacci.recurrence}
+        </code>
+
+        <p>
+          fib({lesson.dynamicProgramming.fibonacci.target}) ={' '}
+          <strong>
+            {lesson.dynamicProgramming.fibonacci.result}
+          </strong>
+        </p>
+      </div>
+
+      <article className="dp-method-card naive-method">
+        <h3>
+          {lesson.dynamicProgramming.fibonacci.naive.title}
+        </h3>
+
+        <p>
+          {lesson.dynamicProgramming.fibonacci.naive.explanation}
+        </p>
+
+        <pre className="python-code">
+          <code>
+            {lesson.dynamicProgramming.fibonacci.naive.code}
+          </code>
+        </pre>
+
+        <h4>Repeated Work</h4>
+
+        <div className="dp-repeated-work">
+          {lesson.dynamicProgramming.fibonacci.naive.repeatedWork.map(
+            (item) => (
+              <div className="dp-work-card" key={item.call}>
+                <code>{item.call}</code>
+                <p>{item.explanation}</p>
+              </div>
+            ),
+          )}
+        </div>
+      </article>
+
+      <div className="dp-method-grid">
+        <article className="dp-method-card memoization-method">
+          <p className="section-label">Top-Down</p>
+
+          <h3>
+            {lesson.dynamicProgramming.fibonacci.memoization.title}
+          </h3>
+
+          <p>
+            {lesson.dynamicProgramming.fibonacci.memoization.explanation}
+          </p>
+
+          <pre className="python-code">
+            <code>
+              {lesson.dynamicProgramming.fibonacci.memoization.code}
+            </code>
+          </pre>
+
+          <h4>Memoization Trace</h4>
+
+          <div className="dp-trace">
+            {lesson.dynamicProgramming.fibonacci.memoization.trace.map(
+              (item) => (
+                <div className="dp-trace-card" key={item.input}>
+                  <div className="dp-trace-heading">
+                    <strong>fib({item.input})</strong>
+                    <span>{item.value}</span>
+                  </div>
+
+                  <p>{item.explanation}</p>
+                </div>
+              ),
+            )}
+          </div>
+        </article>
+
+        <article className="dp-method-card tabulation-method">
+          <p className="section-label">Bottom-Up</p>
+
+          <h3>
+            {lesson.dynamicProgramming.fibonacci.tabulation.title}
+          </h3>
+
+          <p>
+            {lesson.dynamicProgramming.fibonacci.tabulation.explanation}
+          </p>
+
+          <pre className="python-code">
+            <code>
+              {lesson.dynamicProgramming.fibonacci.tabulation.code}
+            </code>
+          </pre>
+
+          <h4>Completed Table</h4>
+
+          <div className="dp-table-values">
+            {lesson.dynamicProgramming.fibonacci.tabulation.table.map(
+              (item) => (
+                <div className="dp-value-card" key={item.index}>
+                  <span>Index {item.index}</span>
+                  <strong>{item.value}</strong>
+                </div>
+              ),
+            )}
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <h3>Memoization vs. Tabulation</h3>
+
+    <div className="table-wrapper">
+      <table className="comparison-table dp-comparison-table">
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Memoization</th>
+            <th>Tabulation</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {lesson.dynamicProgramming.comparison.map((row) => (
+            <tr key={row.feature}>
+              <th>{row.feature}</th>
+              <td>{row.memoization}</td>
+              <td>{row.tabulation}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="dp-complexity-section">
+      <h3>Fibonacci Complexity</h3>
+
+      <div className="dp-complexity-grid">
+        {lesson.dynamicProgramming.complexity.map((item) => (
+          <article
+            className="dp-complexity-card"
+            key={item.approach}
+          >
+            <h4>{item.approach}</h4>
+
+            <div className="dp-complexity-values">
+              <div>
+                <span>Time</span>
+                <strong>{item.time}</strong>
+              </div>
+
+              <div>
+                <span>Space</span>
+                <strong>{item.space}</strong>
+              </div>
+            </div>
+
+            <p>{item.explanation}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+
+    <div className="key-idea dp-limitation">
+      <strong>Remember:</strong>
+      <p>{lesson.dynamicProgramming.limitation}</p>
+    </div>
+  </section>
+)}
+{lesson.backtracking && (
+  <section className="lesson-section backtracking-section">
+    <p className="section-label">Backtracking</p>
+
+    <h2>{lesson.backtracking.title}</h2>
+
+    <p className="lesson-body">
+      {lesson.backtracking.introduction}
+    </p>
+
+    <div className="key-idea">
+      <strong>Key idea:</strong>
+      <p>{lesson.backtracking.keyIdea}</p>
+    </div>
+
+    <h3>Backtracking Process</h3>
+
+    <div className="backtracking-process-grid">
+      {lesson.backtracking.process.map((item) => (
+        <article
+          className="backtracking-process-card"
+          key={item.step}
+        >
+          <span className="backtracking-step-number">
+            Step {item.step}
+          </span>
+
+          <h4>{item.title}</h4>
+          <p>{item.explanation}</p>
+        </article>
+      ))}
+    </div>
+
+    <div className="subset-sum-example">
+      <p className="section-label">Example</p>
+
+      <h3>{lesson.backtracking.subsetSum.title}</h3>
+
+      <p className="lesson-body">
+        {lesson.backtracking.subsetSum.explanation}
+      </p>
+
+      <div className="subset-problem-card">
+        <div>
+          <span>Numbers</span>
+
+          <div className="subset-number-list">
+            {lesson.backtracking.subsetSum.numbers.map(
+              (number) => (
+                <strong key={number}>{number}</strong>
+              ),
+            )}
+          </div>
+        </div>
+
+        <div>
+          <span>Target</span>
+          <strong>
+            {lesson.backtracking.subsetSum.target}
+          </strong>
+        </div>
+      </div>
+
+      <h4>Python Example</h4>
+
+      <pre className="python-code">
+        <code>
+          {lesson.backtracking.subsetSum.code}
+        </code>
+      </pre>
+
+      <h4>Decision Trace</h4>
+
+      <div className="backtracking-trace">
+        {lesson.backtracking.subsetSum.trace.map(
+          (item) => {
+            const statusClass =
+              item.status === 'Solution'
+                ? 'trace-solution'
+                : item.status === 'Dead end'
+                  ? 'trace-dead-end'
+                  : item.status === 'Backtrack'
+                    ? 'trace-backtrack'
+                    : 'trace-explore'
+
+            return (
+              <article
+                className={`backtracking-trace-card ${statusClass}`}
+                key={item.step}
+              >
+                <div className="backtracking-trace-heading">
+                  <span>Step {item.step}</span>
+                  <strong>{item.status}</strong>
+                </div>
+
+                <h4>{item.choice}</h4>
+
+                <p>
+                  <strong>Selected:</strong>{' '}
+                  {item.selected.length > 0
+                    ? item.selected.join(', ')
+                    : 'None'}
+                </p>
+
+                <p>
+                  <strong>Remaining target:</strong>{' '}
+                  {item.remaining}
+                </p>
+
+                <p>{item.explanation}</p>
+              </article>
+            )
+          },
+        )}
+      </div>
+
+      <div className="subset-result">
+        <strong>Valid subset:</strong>
+
+        <div className="subset-result-values">
+          {lesson.backtracking.subsetSum.result.map(
+            (number) => (
+              <span key={number}>{number}</span>
+            ),
+          )}
+        </div>
+
+        <p>
+          {lesson.backtracking.subsetSum.result.join(
+            ' + ',
+          )}{' '}
+          = {lesson.backtracking.subsetSum.target}
+        </p>
+      </div>
+    </div>
+
+    <div className="backtracking-summary-grid">
+      <article className="backtracking-useful-card">
+        <h3>When Backtracking Is Useful</h3>
+
+        <ul>
+          {lesson.backtracking.whenUseful.map(
+            (item) => (
+              <li key={item}>{item}</li>
+            ),
+          )}
+        </ul>
+      </article>
+
+      <article className="backtracking-complexity-card">
+        <h3>Complexity</h3>
+
+        <div className="backtracking-complexity-values">
+          <div>
+            <span>Time</span>
+            <strong>
+              {lesson.backtracking.complexity.time}
+            </strong>
+          </div>
+
+          <div>
+            <span>Space</span>
+            <strong>
+              {lesson.backtracking.complexity.space}
+            </strong>
+          </div>
+        </div>
+
+        <p>
+          {lesson.backtracking.complexity.explanation}
+        </p>
+      </article>
+    </div>
+
+    <div className="key-idea backtracking-limitation">
+      <strong>Remember:</strong>
+      <p>{lesson.backtracking.limitation}</p>
+    </div>
+  </section>
+)}
+
         {lesson.graphFundamentals && (
           <section className="lesson-section graph-fundamentals-section">
             <p className="section-label">Graph Fundamentals</p>
